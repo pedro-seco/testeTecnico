@@ -7,9 +7,7 @@ Teste técnico para estagiário em Desenvolvimento na [NerdMonster](https://nerd
 1. [Critérios](#Critérios)
 2. [Sistema](#Sistema)  
 2.1. [Tela 1](#tela-1)  
-2.2. [Tela 2](#tela-2) 
-3. [Objetivos](#Objetivos)  
-3.1. [Objetivos Extras](#objetivos-extras)
+2.2. [Tela 2](#tela-2)
 
 ## Critérios
 
