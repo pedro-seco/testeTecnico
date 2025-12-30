@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meus Mapas
 
-## Getting Started
+Teste técnico para estagiário em Desenvolvimento na [NerdMonster](https://nerdmonster.com/)
 
-First, run the development server:
+## Sumário
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. [Critérios](#Critérios)
+2. [Sistema](#Sistema)  
+2.1. [Tela 1](#tela-1)  
+2.2. [Tela 2](#tela-2) 
+3. [Objetivos](#Objetivos)  
+3.1. [Objetivos Extras](#objetivos-extras)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Critérios
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A avaliação será baseada em 5 critérios principais, começando por:  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Critério 1 (20 pontos) – Fundamentos (Dev Web, Redes, POO e BD).: Avalia se o candidato domina a lógica básica e consegue transformar o problema em código funcional.  
 
-## Learn More
+- Critério 2 (20 pontos) – Funcionamento da Solução: Avalia se o sistema roda corretamente e entrega o que foi proposto.  
 
-To learn more about Next.js, take a look at the following resources:
+- Critério 3 (20 pontos) – Organização do Projeto: Avalia se o código e a estrutura do projeto estão organizados e fáceis de entender.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Critério 4 (20 pontos) – Uso de Banco de Dados: Avalia se o candidato consegue criar e manipular dados de forma simples e correta.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Critério 5 (20 pontos) – Clareza e Comunicação: Avalia se o candidato consegue explicar o que fez e documentar minimamente a solução.  
 
-## Deploy on Vercel
+- Critério 6 (extras) - Fez a mais… Mostrou que sabe? Quis inovar? Isso é muito bem vindo e damos pontos para isso. Quero usar docker? use. Quero fazer deploy. Faça! Nos impressione! Entra no jogo!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Sistema  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Tela 1  
+
+Listagem de Mapas será a tela inicial e deve permitir listar todos os mapas criados, exibir o nome do mapa e a quantidade de pontos cadastrados, além de possibilitar criar um novo mapa e acessar um mapa existente.
+
+### Tela 2  
+
+Ao acessar um mapa, o usuário será direcionado para a Tela 2 – Detalhe do Mapa (Cadastro de Pontos). Essa tela deve conter um mapa interativo, uma lista lateral ou inferior com todos os pontos cadastrados e um indicador visível com o total de pontos cadastrados naquele mapa. O usuário deverá conseguir clicar no mapa para adicionar um novo ponto, o que deve abrir um modal de cadastro, onde será possível informar o nome do ponto, com latitude e longitude preenchidas automaticamente. O sistema deve exibir todos os pontos tanto no mapa quanto na lista, permitir editar apenas o nome do ponto, excluir um ponto específico e também excluir todos os pontos do mapa através de um botão dedicado. Não é necessário permitir a alteração da posição do ponto após o cadastro.
+
+## TODO
+
+Sobre os objetivos (inclusive os extras) que eu tinha colocado aqui, eu, o pedro do passado, deixo uma reflexão ao pedro do futuro: "Falar é fácil, quero ver código"
+
+Primeiro push está feito, api pronta e banco configurado(?).
+
+- FAZER DOC DOS ENDPOINTS
+- DESCOBRIR SE O QUE EU FIZ NO POSTMAN SÃO TESTE UNITÁRIOS (são 1:30 e minha dor de cabeça não me deixa focar mais, eu to desde 10 am cozinhando esse projeto)
