@@ -1,6 +1,8 @@
+import { GET } from "./api/maps/route";
 import { prisma } from "./lib/prisma";
 
 export default async function Home() {
+
   const maps = await prisma.mapas.findMany({
     include:{
       pontos: true,
@@ -16,7 +18,6 @@ export default async function Home() {
         {maps.map((mapas) => (
           <li key={mapas.id} className="mb-2">
             {mapas.name}
-
           </li>
         ))}
       </ol>

@@ -1,39 +1,57 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/app/lib/prisma";
+import { badRequest, prismaToHttp } from "@/app/api/helper/httpUtils";
+import { isAtributeMissing, isBodyEmpty, isIdValid } from "@/app/api/helper/commonFunctions";
+import { criarPontoNoMapa, deletarPontosNoMapa } from "./services";
 
+// /api/maps/[mapsId]/points
 //POST -> criaPonto(dados)
 export async function POST(
     request: Request,
-    context: {params: Promise<{mapsId:number}>}
-){
-    const {mapsId} = await context.params;
-    const body = await request.json();
-    const criaPonto = await prisma.pOIs.create({
-        data: {
-            titulo:body.titulo,
-            lat:body.lat,
-            long:body.long,
-            mapId: mapsId,
-        }
-    });
+    context: {params: Promise<{mapsId:string}>}
+    ){
 
-    return NextResponse.json(criaPonto,{
-        status:201,
-    });
+    try{
+        const {mapsId} = await context.params;
+        const id = Number(mapsId);
+
+        if (!isIdValid(id) ){
+            return badRequest()
+        }
+
+        const body = await request.json();
+        
+        if(isBodyEmpty(body)){
+            return badRequest()
+        }
+
+        for (const atributo in body){
+            if(isAtributeMissing(atributo)){
+                return badRequest();
+            }
+        }
+
+        const pontoCriado = await criarPontoNoMapa(id, body)
+        
+        return NextResponse.json(pontoCriado,{status: 200});
+    } catch(error) {return prismaToHttp(error)}
+    
 }
 
 // DELETE -> deletaPontos(idMapa)
 export async function DELETE(
     request: Request,
     context: {params: Promise<{mapsId:string}>}
-    ){ 
-    const {mapsId} = await context.params;
-    const deletaPonto = await prisma.pOIs.deleteMany({
-        where: {
-            mapId: parseInt(mapsId),
-        },
-    });
-    return NextResponse.json(deletaPonto, {
-        status: 202
-    });
-}
+        ){
+        try{
+            const {mapsId} = await context.params;
+            const id = Number(mapsId);
+            
+            if (!isIdValid(id)){
+                return badRequest()
+            }
+
+            await deletarPontosNoMapa(id);
+
+            return new NextResponse(null, {status: 204});
+        } catch(error) {return prismaToHttp(error)}
+    }

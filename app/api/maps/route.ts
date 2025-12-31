@@ -1,67 +1,29 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/app/lib/prisma";
+import { badRequest, prismaToHttp } from "../helper/httpUtils";
+import { isAtributeMissing, isBodyEmpty } from "../helper/commonFunctions";
+import { buscarMapas, criarMapa } from "./service";
 
+// api/maps/
 //GET -> Lista mapas e seus respectivos pontos
 export async function GET(){
     try{
-    const maps = await prisma.mapas.findMany({
-    include:{
-      pontos: true,
-    },
-  });
+        const mapasEncontrados = await buscarMapas();
 
-  return NextResponse.json(maps,{
-    status: 200
-});
-  
-} catch (error) {
-    console.error("Erro ao buscar mapas: ", error);
-    return NextResponse.json(
-        {error: "Erro interno ao buscar os mapas"},
-        {status: 500 }
-    );
-  }
+        return NextResponse.json(mapasEncontrados, {status: 200});
+    } catch(error) {return prismaToHttp(error)}
 }
 
-//POST -> Cria um mapa (e seus respectivos pontos)
+//POST -> Cria um mapa
 export async function POST(request: Request){
-    const body = await request.json();
-    const novoMapa = await prisma.mapas.create({
-        data: {
-            name: body.name,
-            pontos: {
-                create: body.pontos || []
-            },
-        },
-        include: {
-            pontos: true,
-        },
-    });
+    try{
+        const body = await request.json();
 
-  return NextResponse.json(novoMapa, {
-    status: 201
-});
-}
-
-//DELETE -> Deleta um mapa, junto com todos os seus pontos
-export async function DELETE(request: Request){
-    const body = await request.json();
-    const deletarPontos = await prisma.pOIs.deleteMany({
-        where: {
-            mapId: body.id,
+        if (isBodyEmpty(body) || isAtributeMissing(body.name)){
+            return badRequest()
         }
-    });
 
-    const deletarMapa = await prisma.mapas.delete({
-        where: {
-            id: body.id,
-        },
-        include: { /* retornoa pontos [] */
-            pontos: true,
-        }
-    });
+        const novoMapa = await criarMapa(body);
 
-    return NextResponse.json(deletarMapa,{
-        status: 202,
-    })
+        return NextResponse.json(novoMapa, {status: 200});
+    } catch(error) {return prismaToHttp(error)}
 }
