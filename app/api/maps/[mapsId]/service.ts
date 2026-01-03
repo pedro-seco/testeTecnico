@@ -1,22 +1,22 @@
 import { prisma } from "@/app/lib/prisma";
-import { MapaComPontoDTO} from "../types";
-import { toMapaComPontoDTO } from "../mapper";
+import { MapWithPOIsDTO} from "../types";
+import { toMapWithPOIsDTO } from "../mapper";
 
-export async function buscarMapaComPontos(id:number): Promise<MapaComPontoDTO | null>{
-    const mapa = await prisma.mapas.findUnique({
+export async function searchMapWithPOIs(id:number): Promise<MapWithPOIsDTO | null>{
+    const maps = await prisma.map.findUnique({
         where: {id: id},
-        include: {pontos: true}
+        include: {pois: true}
     });
-    return mapa ? toMapaComPontoDTO(mapa) : null;
+    return maps ? toMapWithPOIsDTO(maps) : null;
 }
 
-export async function deletarMapaComPontos(id:number) {
+export async function deleteMapWithPOIs(id:number) {
     await prisma.pOIs.deleteMany({
             where: {mapId: id}
         });
 
-    await prisma.mapas.delete({
+    await prisma.map.delete({
             where: {id: id},
-            include: {pontos: true}
+            include: {pois: true}
         });
 }

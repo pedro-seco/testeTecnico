@@ -1,19 +1,17 @@
 import { NextResponse } from "next/server";
 import { badRequest, prismaToHttp } from "../helper/httpUtils";
 import { isAtributeMissing, isBodyEmpty } from "../helper/commonFunctions";
-import { buscarMapas, criarMapa } from "./service";
+import { searchMaps, createMap } from "./service";
 
 // api/maps/
-//GET -> Lista mapas e seus respectivos pontos
 export async function GET(){
     try{
-        const mapasEncontrados = await buscarMapas();
+        const foundMap = await searchMaps();
 
-        return NextResponse.json(mapasEncontrados, {status: 200});
+        return NextResponse.json(foundMap, {status: 200});
     } catch(error) {return prismaToHttp(error)}
 }
 
-//POST -> Cria um mapa
 export async function POST(request: Request){
     try{
         const body = await request.json();
@@ -22,8 +20,8 @@ export async function POST(request: Request){
             return badRequest()
         }
 
-        const novoMapa = await criarMapa(body);
+        const newMap = await createMap(body);
 
-        return NextResponse.json(novoMapa, {status: 200});
+        return NextResponse.json(newMap, {status: 200});
     } catch(error) {return prismaToHttp(error)}
 }

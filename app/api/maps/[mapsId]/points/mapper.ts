@@ -1,11 +1,11 @@
 import { POIs } from "@/prisma/generated/prisma/client";
 
-export function toPontoNoMapaDTO(ponto: POIs): PontoNoMapaDTO{
+export function toPOIsOnMapDTO(pois: POIs): POIsOnMapDTO{
     return {
-        id: ponto.id,
-        titulo: ponto.titulo ?? undefined,
-        lat: ponto.lat,
-        long: ponto.long,
-        mapId: ponto.mapId
+        id: pois.id,
+        name: pois.name,
+        latitude: pois.latitude,
+        longitude: pois.longitude,
+        mapId: pois.mapId
     }
 }

@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 import { badRequest, prismaToHttp } from "../../helper/httpUtils";
 import { isIdValid } from "../../helper/commonFunctions";
-import { buscarMapaComPontos, deletarMapaComPontos } from "./service";
+import { searchMapWithPOIs, deleteMapWithPOIs } from "./service";
 
 //app/api/maps/[mapsId]
-//GET -> retornaPontos(mapsId)
 
-//Retorna os pontos de um mapa
 export async function GET(
     request: Request,
     context: {params: Promise<{mapsId:string}>}
@@ -19,13 +17,12 @@ export async function GET(
                 return badRequest()
             }
 
-            const dados = await buscarMapaComPontos(id);
+            const data = await searchMapWithPOIs(id);
 
-            return NextResponse.json(dados, { status: 200});
+            return NextResponse.json(data, { status: 200});
         } catch(error) {return prismaToHttp(error)}
 }
 
-//DELETE -> Deleta um mapa, junto com todos os seus pontos
 export async function DELETE(
     request: Request,
     context: {params: Promise<{mapsId:string}>}
@@ -38,7 +35,7 @@ export async function DELETE(
             return badRequest()
         }
 
-        await deletarMapaComPontos(id);
+        await deleteMapWithPOIs(id);
 
         return new NextResponse(null, {status: 204})
     } catch(error)  {return prismaToHttp(error)}

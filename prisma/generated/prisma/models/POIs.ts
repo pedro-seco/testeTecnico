@@ -28,39 +28,39 @@ export type AggregatePOIs = {
 
 export type POIsAvgAggregateOutputType = {
   id: number | null
-  lat: number | null
-  long: number | null
+  latitude: number | null
+  longitude: number | null
   mapId: number | null
 }
 
 export type POIsSumAggregateOutputType = {
   id: number | null
-  lat: number | null
-  long: number | null
+  latitude: number | null
+  longitude: number | null
   mapId: number | null
 }
 
 export type POIsMinAggregateOutputType = {
   id: number | null
-  titulo: string | null
-  lat: number | null
-  long: number | null
+  name: string | null
+  latitude: number | null
+  longitude: number | null
   mapId: number | null
 }
 
 export type POIsMaxAggregateOutputType = {
   id: number | null
-  titulo: string | null
-  lat: number | null
-  long: number | null
+  name: string | null
+  latitude: number | null
+  longitude: number | null
   mapId: number | null
 }
 
 export type POIsCountAggregateOutputType = {
   id: number
-  titulo: number
-  lat: number
-  long: number
+  name: number
+  latitude: number
+  longitude: number
   mapId: number
   _all: number
 }
@@ -68,39 +68,39 @@ export type POIsCountAggregateOutputType = {
 
 export type POIsAvgAggregateInputType = {
   id?: true
-  lat?: true
-  long?: true
+  latitude?: true
+  longitude?: true
   mapId?: true
 }
 
 export type POIsSumAggregateInputType = {
   id?: true
-  lat?: true
-  long?: true
+  latitude?: true
+  longitude?: true
   mapId?: true
 }
 
 export type POIsMinAggregateInputType = {
   id?: true
-  titulo?: true
-  lat?: true
-  long?: true
+  name?: true
+  latitude?: true
+  longitude?: true
   mapId?: true
 }
 
 export type POIsMaxAggregateInputType = {
   id?: true
-  titulo?: true
-  lat?: true
-  long?: true
+  name?: true
+  latitude?: true
+  longitude?: true
   mapId?: true
 }
 
 export type POIsCountAggregateInputType = {
   id?: true
-  titulo?: true
-  lat?: true
-  long?: true
+  name?: true
+  latitude?: true
+  longitude?: true
   mapId?: true
   _all?: true
 }
@@ -193,9 +193,9 @@ export type POIsGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type POIsGroupByOutputType = {
   id: number
-  titulo: string | null
-  lat: number
-  long: number
+  name: string
+  latitude: number
+  longitude: number
   mapId: number
   _count: POIsCountAggregateOutputType | null
   _avg: POIsAvgAggregateOutputType | null
@@ -224,20 +224,20 @@ export type POIsWhereInput = {
   OR?: Prisma.POIsWhereInput[]
   NOT?: Prisma.POIsWhereInput | Prisma.POIsWhereInput[]
   id?: Prisma.IntFilter<"POIs"> | number
-  titulo?: Prisma.StringNullableFilter<"POIs"> | string | null
-  lat?: Prisma.IntFilter<"POIs"> | number
-  long?: Prisma.IntFilter<"POIs"> | number
+  name?: Prisma.StringFilter<"POIs"> | string
+  latitude?: Prisma.FloatFilter<"POIs"> | number
+  longitude?: Prisma.FloatFilter<"POIs"> | number
   mapId?: Prisma.IntFilter<"POIs"> | number
-  mapa?: Prisma.XOR<Prisma.MapasScalarRelationFilter, Prisma.MapasWhereInput>
+  map?: Prisma.XOR<Prisma.MapScalarRelationFilter, Prisma.MapWhereInput>
 }
 
 export type POIsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrderInput | Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
-  mapa?: Prisma.MapasOrderByWithRelationInput
+  map?: Prisma.MapOrderByWithRelationInput
 }
 
 export type POIsWhereUniqueInput = Prisma.AtLeast<{
@@ -245,18 +245,18 @@ export type POIsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.POIsWhereInput | Prisma.POIsWhereInput[]
   OR?: Prisma.POIsWhereInput[]
   NOT?: Prisma.POIsWhereInput | Prisma.POIsWhereInput[]
-  titulo?: Prisma.StringNullableFilter<"POIs"> | string | null
-  lat?: Prisma.IntFilter<"POIs"> | number
-  long?: Prisma.IntFilter<"POIs"> | number
+  name?: Prisma.StringFilter<"POIs"> | string
+  latitude?: Prisma.FloatFilter<"POIs"> | number
+  longitude?: Prisma.FloatFilter<"POIs"> | number
   mapId?: Prisma.IntFilter<"POIs"> | number
-  mapa?: Prisma.XOR<Prisma.MapasScalarRelationFilter, Prisma.MapasWhereInput>
+  map?: Prisma.XOR<Prisma.MapScalarRelationFilter, Prisma.MapWhereInput>
 }, "id">
 
 export type POIsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrderInput | Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
   _count?: Prisma.POIsCountOrderByAggregateInput
   _avg?: Prisma.POIsAvgOrderByAggregateInput
@@ -270,61 +270,61 @@ export type POIsScalarWhereWithAggregatesInput = {
   OR?: Prisma.POIsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.POIsScalarWhereWithAggregatesInput | Prisma.POIsScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"POIs"> | number
-  titulo?: Prisma.StringNullableWithAggregatesFilter<"POIs"> | string | null
-  lat?: Prisma.IntWithAggregatesFilter<"POIs"> | number
-  long?: Prisma.IntWithAggregatesFilter<"POIs"> | number
+  name?: Prisma.StringWithAggregatesFilter<"POIs"> | string
+  latitude?: Prisma.FloatWithAggregatesFilter<"POIs"> | number
+  longitude?: Prisma.FloatWithAggregatesFilter<"POIs"> | number
   mapId?: Prisma.IntWithAggregatesFilter<"POIs"> | number
 }
 
 export type POIsCreateInput = {
-  titulo?: string | null
-  lat: number
-  long: number
-  mapa: Prisma.MapasCreateNestedOneWithoutPontosInput
+  name: string
+  latitude: number
+  longitude: number
+  map: Prisma.MapCreateNestedOneWithoutPoisInput
 }
 
 export type POIsUncheckedCreateInput = {
   id?: number
-  titulo?: string | null
-  lat: number
-  long: number
+  name: string
+  latitude: number
+  longitude: number
   mapId: number
 }
 
 export type POIsUpdateInput = {
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
-  mapa?: Prisma.MapasUpdateOneRequiredWithoutPontosNestedInput
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  map?: Prisma.MapUpdateOneRequiredWithoutPoisNestedInput
 }
 
 export type POIsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   mapId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type POIsCreateManyInput = {
   id?: number
-  titulo?: string | null
-  lat: number
-  long: number
+  name: string
+  latitude: number
+  longitude: number
   mapId: number
 }
 
 export type POIsUpdateManyMutationInput = {
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type POIsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   mapId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -340,120 +340,120 @@ export type POIsOrderByRelationAggregateInput = {
 
 export type POIsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
 }
 
 export type POIsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
 }
 
 export type POIsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
 }
 
 export type POIsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
 }
 
 export type POIsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  lat?: Prisma.SortOrder
-  long?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   mapId?: Prisma.SortOrder
 }
 
-export type POIsCreateNestedManyWithoutMapaInput = {
-  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput> | Prisma.POIsCreateWithoutMapaInput[] | Prisma.POIsUncheckedCreateWithoutMapaInput[]
-  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapaInput | Prisma.POIsCreateOrConnectWithoutMapaInput[]
-  createMany?: Prisma.POIsCreateManyMapaInputEnvelope
+export type POIsCreateNestedManyWithoutMapInput = {
+  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput> | Prisma.POIsCreateWithoutMapInput[] | Prisma.POIsUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapInput | Prisma.POIsCreateOrConnectWithoutMapInput[]
+  createMany?: Prisma.POIsCreateManyMapInputEnvelope
   connect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
 }
 
-export type POIsUncheckedCreateNestedManyWithoutMapaInput = {
-  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput> | Prisma.POIsCreateWithoutMapaInput[] | Prisma.POIsUncheckedCreateWithoutMapaInput[]
-  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapaInput | Prisma.POIsCreateOrConnectWithoutMapaInput[]
-  createMany?: Prisma.POIsCreateManyMapaInputEnvelope
+export type POIsUncheckedCreateNestedManyWithoutMapInput = {
+  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput> | Prisma.POIsCreateWithoutMapInput[] | Prisma.POIsUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapInput | Prisma.POIsCreateOrConnectWithoutMapInput[]
+  createMany?: Prisma.POIsCreateManyMapInputEnvelope
   connect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
 }
 
-export type POIsUpdateManyWithoutMapaNestedInput = {
-  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput> | Prisma.POIsCreateWithoutMapaInput[] | Prisma.POIsUncheckedCreateWithoutMapaInput[]
-  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapaInput | Prisma.POIsCreateOrConnectWithoutMapaInput[]
-  upsert?: Prisma.POIsUpsertWithWhereUniqueWithoutMapaInput | Prisma.POIsUpsertWithWhereUniqueWithoutMapaInput[]
-  createMany?: Prisma.POIsCreateManyMapaInputEnvelope
+export type POIsUpdateManyWithoutMapNestedInput = {
+  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput> | Prisma.POIsCreateWithoutMapInput[] | Prisma.POIsUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapInput | Prisma.POIsCreateOrConnectWithoutMapInput[]
+  upsert?: Prisma.POIsUpsertWithWhereUniqueWithoutMapInput | Prisma.POIsUpsertWithWhereUniqueWithoutMapInput[]
+  createMany?: Prisma.POIsCreateManyMapInputEnvelope
   set?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   disconnect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   delete?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   connect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
-  update?: Prisma.POIsUpdateWithWhereUniqueWithoutMapaInput | Prisma.POIsUpdateWithWhereUniqueWithoutMapaInput[]
-  updateMany?: Prisma.POIsUpdateManyWithWhereWithoutMapaInput | Prisma.POIsUpdateManyWithWhereWithoutMapaInput[]
+  update?: Prisma.POIsUpdateWithWhereUniqueWithoutMapInput | Prisma.POIsUpdateWithWhereUniqueWithoutMapInput[]
+  updateMany?: Prisma.POIsUpdateManyWithWhereWithoutMapInput | Prisma.POIsUpdateManyWithWhereWithoutMapInput[]
   deleteMany?: Prisma.POIsScalarWhereInput | Prisma.POIsScalarWhereInput[]
 }
 
-export type POIsUncheckedUpdateManyWithoutMapaNestedInput = {
-  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput> | Prisma.POIsCreateWithoutMapaInput[] | Prisma.POIsUncheckedCreateWithoutMapaInput[]
-  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapaInput | Prisma.POIsCreateOrConnectWithoutMapaInput[]
-  upsert?: Prisma.POIsUpsertWithWhereUniqueWithoutMapaInput | Prisma.POIsUpsertWithWhereUniqueWithoutMapaInput[]
-  createMany?: Prisma.POIsCreateManyMapaInputEnvelope
+export type POIsUncheckedUpdateManyWithoutMapNestedInput = {
+  create?: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput> | Prisma.POIsCreateWithoutMapInput[] | Prisma.POIsUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.POIsCreateOrConnectWithoutMapInput | Prisma.POIsCreateOrConnectWithoutMapInput[]
+  upsert?: Prisma.POIsUpsertWithWhereUniqueWithoutMapInput | Prisma.POIsUpsertWithWhereUniqueWithoutMapInput[]
+  createMany?: Prisma.POIsCreateManyMapInputEnvelope
   set?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   disconnect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   delete?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
   connect?: Prisma.POIsWhereUniqueInput | Prisma.POIsWhereUniqueInput[]
-  update?: Prisma.POIsUpdateWithWhereUniqueWithoutMapaInput | Prisma.POIsUpdateWithWhereUniqueWithoutMapaInput[]
-  updateMany?: Prisma.POIsUpdateManyWithWhereWithoutMapaInput | Prisma.POIsUpdateManyWithWhereWithoutMapaInput[]
+  update?: Prisma.POIsUpdateWithWhereUniqueWithoutMapInput | Prisma.POIsUpdateWithWhereUniqueWithoutMapInput[]
+  updateMany?: Prisma.POIsUpdateManyWithWhereWithoutMapInput | Prisma.POIsUpdateManyWithWhereWithoutMapInput[]
   deleteMany?: Prisma.POIsScalarWhereInput | Prisma.POIsScalarWhereInput[]
 }
 
-export type POIsCreateWithoutMapaInput = {
-  titulo?: string | null
-  lat: number
-  long: number
+export type POIsCreateWithoutMapInput = {
+  name: string
+  latitude: number
+  longitude: number
 }
 
-export type POIsUncheckedCreateWithoutMapaInput = {
+export type POIsUncheckedCreateWithoutMapInput = {
   id?: number
-  titulo?: string | null
-  lat: number
-  long: number
+  name: string
+  latitude: number
+  longitude: number
 }
 
-export type POIsCreateOrConnectWithoutMapaInput = {
+export type POIsCreateOrConnectWithoutMapInput = {
   where: Prisma.POIsWhereUniqueInput
-  create: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput>
+  create: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput>
 }
 
-export type POIsCreateManyMapaInputEnvelope = {
-  data: Prisma.POIsCreateManyMapaInput | Prisma.POIsCreateManyMapaInput[]
+export type POIsCreateManyMapInputEnvelope = {
+  data: Prisma.POIsCreateManyMapInput | Prisma.POIsCreateManyMapInput[]
 }
 
-export type POIsUpsertWithWhereUniqueWithoutMapaInput = {
+export type POIsUpsertWithWhereUniqueWithoutMapInput = {
   where: Prisma.POIsWhereUniqueInput
-  update: Prisma.XOR<Prisma.POIsUpdateWithoutMapaInput, Prisma.POIsUncheckedUpdateWithoutMapaInput>
-  create: Prisma.XOR<Prisma.POIsCreateWithoutMapaInput, Prisma.POIsUncheckedCreateWithoutMapaInput>
+  update: Prisma.XOR<Prisma.POIsUpdateWithoutMapInput, Prisma.POIsUncheckedUpdateWithoutMapInput>
+  create: Prisma.XOR<Prisma.POIsCreateWithoutMapInput, Prisma.POIsUncheckedCreateWithoutMapInput>
 }
 
-export type POIsUpdateWithWhereUniqueWithoutMapaInput = {
+export type POIsUpdateWithWhereUniqueWithoutMapInput = {
   where: Prisma.POIsWhereUniqueInput
-  data: Prisma.XOR<Prisma.POIsUpdateWithoutMapaInput, Prisma.POIsUncheckedUpdateWithoutMapaInput>
+  data: Prisma.XOR<Prisma.POIsUpdateWithoutMapInput, Prisma.POIsUncheckedUpdateWithoutMapInput>
 }
 
-export type POIsUpdateManyWithWhereWithoutMapaInput = {
+export type POIsUpdateManyWithWhereWithoutMapInput = {
   where: Prisma.POIsScalarWhereInput
-  data: Prisma.XOR<Prisma.POIsUpdateManyMutationInput, Prisma.POIsUncheckedUpdateManyWithoutMapaInput>
+  data: Prisma.XOR<Prisma.POIsUpdateManyMutationInput, Prisma.POIsUncheckedUpdateManyWithoutMapInput>
 }
 
 export type POIsScalarWhereInput = {
@@ -461,97 +461,97 @@ export type POIsScalarWhereInput = {
   OR?: Prisma.POIsScalarWhereInput[]
   NOT?: Prisma.POIsScalarWhereInput | Prisma.POIsScalarWhereInput[]
   id?: Prisma.IntFilter<"POIs"> | number
-  titulo?: Prisma.StringNullableFilter<"POIs"> | string | null
-  lat?: Prisma.IntFilter<"POIs"> | number
-  long?: Prisma.IntFilter<"POIs"> | number
+  name?: Prisma.StringFilter<"POIs"> | string
+  latitude?: Prisma.FloatFilter<"POIs"> | number
+  longitude?: Prisma.FloatFilter<"POIs"> | number
   mapId?: Prisma.IntFilter<"POIs"> | number
 }
 
-export type POIsCreateManyMapaInput = {
+export type POIsCreateManyMapInput = {
   id?: number
-  titulo?: string | null
-  lat: number
-  long: number
+  name: string
+  latitude: number
+  longitude: number
 }
 
-export type POIsUpdateWithoutMapaInput = {
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+export type POIsUpdateWithoutMapInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type POIsUncheckedUpdateWithoutMapaInput = {
+export type POIsUncheckedUpdateWithoutMapInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type POIsUncheckedUpdateManyWithoutMapaInput = {
+export type POIsUncheckedUpdateManyWithoutMapInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  titulo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.IntFieldUpdateOperationsInput | number
-  long?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 
 
 export type POIsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  titulo?: boolean
-  lat?: boolean
-  long?: boolean
+  name?: boolean
+  latitude?: boolean
+  longitude?: boolean
   mapId?: boolean
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pOIs"]>
 
 export type POIsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  titulo?: boolean
-  lat?: boolean
-  long?: boolean
+  name?: boolean
+  latitude?: boolean
+  longitude?: boolean
   mapId?: boolean
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pOIs"]>
 
 export type POIsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  titulo?: boolean
-  lat?: boolean
-  long?: boolean
+  name?: boolean
+  latitude?: boolean
+  longitude?: boolean
   mapId?: boolean
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pOIs"]>
 
 export type POIsSelectScalar = {
   id?: boolean
-  titulo?: boolean
-  lat?: boolean
-  long?: boolean
+  name?: boolean
+  latitude?: boolean
+  longitude?: boolean
   mapId?: boolean
 }
 
-export type POIsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "lat" | "long" | "mapId", ExtArgs["result"]["pOIs"]>
+export type POIsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "latitude" | "longitude" | "mapId", ExtArgs["result"]["pOIs"]>
 export type POIsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }
 export type POIsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }
 export type POIsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  mapa?: boolean | Prisma.MapasDefaultArgs<ExtArgs>
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
 }
 
 export type $POIsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "POIs"
   objects: {
-    mapa: Prisma.$MapasPayload<ExtArgs>
+    map: Prisma.$MapPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    titulo: string | null
-    lat: number
-    long: number
+    name: string
+    latitude: number
+    longitude: number
     mapId: number
   }, ExtArgs["result"]["pOIs"]>
   composites: {}
@@ -947,7 +947,7 @@ readonly fields: POIsFieldRefs;
  */
 export interface Prisma__POIsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  mapa<T extends Prisma.MapasDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MapasDefaultArgs<ExtArgs>>): Prisma.Prisma__MapasClient<runtime.Types.Result.GetResult<Prisma.$MapasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  map<T extends Prisma.MapDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MapDefaultArgs<ExtArgs>>): Prisma.Prisma__MapClient<runtime.Types.Result.GetResult<Prisma.$MapPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -978,9 +978,9 @@ export interface Prisma__POIsClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface POIsFieldRefs {
   readonly id: Prisma.FieldRef<"POIs", 'Int'>
-  readonly titulo: Prisma.FieldRef<"POIs", 'String'>
-  readonly lat: Prisma.FieldRef<"POIs", 'Int'>
-  readonly long: Prisma.FieldRef<"POIs", 'Int'>
+  readonly name: Prisma.FieldRef<"POIs", 'String'>
+  readonly latitude: Prisma.FieldRef<"POIs", 'Float'>
+  readonly longitude: Prisma.FieldRef<"POIs", 'Float'>
   readonly mapId: Prisma.FieldRef<"POIs", 'Int'>
 }
     

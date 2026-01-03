@@ -1,20 +1,25 @@
 import { prisma } from "@/app/lib/prisma";
-import { toMapaComPontoDTO, toMapaDTO } from "./mapper";
-import { MapaComPontoDTO, criarMapaBody, MapaDTO } from "./types";
+import { toMapWithPOIsDTO, toMapDTO } from "./mapper";
+import { mapWithPOIs, createMapBody, MapDTO } from "./types";
 
-export async function buscarMapas(): Promise<MapaComPontoDTO[]> {
-    const mapasEncontrados = await prisma.mapas.findMany({
-        include: {pontos: true},
+export async function searchMaps(): Promise<mapWithPOIs[]> {
+    const foundMaps = await prisma.map.findMany({
+        include: {pois: true},
         });
-    return mapasEncontrados.map(toMapaComPontoDTO)
+    return foundMaps.map(toMapWithPOIsDTO)
 }
 
-export async function criarMapa(
-    body:criarMapaBody): Promise<MapaDTO>{
+export async function createMap(
+    body:createMapBody): Promise<MapDTO>{
     
-    const mapaCriado = await prisma.mapas.create({
-            data: {name: body.name},
+    const mapaCriado = await prisma.map.create({
+            data: {
+                name: body.name,
+                latitude: body.latitude,
+                longitude:body.longitude,
+                borders: body.borders
+            },
         });
 
-    return toMapaDTO(mapaCriado);
+    return toMapDTO(mapaCriado);
 }

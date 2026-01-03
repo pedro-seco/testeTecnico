@@ -1,18 +1,26 @@
-import { toPontoDTO } from "../points/[pointId]/mapper";
-import { MapaComPontoDTO, MapaDTO, mapaComPontos } from "./types";
-import { Mapas } from "@/prisma/generated/prisma/browser";
+import { toPOIsDTO } from "../points/[pointId]/mapper";
+import { MapWithPOIsDTO, MapDTO, mapWithPOIs } from "./types";
+import { Map } from "@/prisma/generated/prisma/browser";
 
-export function toMapaComPontoDTO(mapas: mapaComPontos): MapaComPontoDTO{
+export function toMapWithPOIsDTO(maps: mapWithPOIs): MapWithPOIsDTO{
     return {
-        id: mapas.id,
-        name: mapas.name ?? undefined,
-        pontos: mapas.pontos.map(toPontoDTO)
+        id: maps.id,
+        name: maps.name!,
+        latitude: maps.latitude,
+        longitude: maps.longitude,
+        borders: maps.borders,
+        pois: maps.pois.map(toPOIsDTO),
+        createdAt: maps.createdAt
     }
 }
 
-export function toMapaDTO(mapas: Mapas):MapaDTO{
+export function toMapDTO(maps: Map):MapDTO{
     return {
-        id: mapas.id,
-        name: mapas.name ?? undefined,
+        id: maps.id,
+        name: maps.name!,
+        latitude: maps.latitude,
+        longitude: maps.longitude,
+        borders:maps.borders,
+        createdAt: maps.createdAt
     }
 }

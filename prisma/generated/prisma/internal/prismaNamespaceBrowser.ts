@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Mapas: 'Mapas',
+  Map: 'Map',
   POIs: 'POIs'
 } as const
 
@@ -68,19 +68,23 @@ export const TransactionIsolationLevel = {
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MapasScalarFieldEnum = {
+export const MapScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  borders: 'borders',
+  createdAt: 'createdAt'
 } as const
 
-export type MapasScalarFieldEnum = (typeof MapasScalarFieldEnum)[keyof typeof MapasScalarFieldEnum]
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
 
 
 export const POIsScalarFieldEnum = {
   id: 'id',
-  titulo: 'titulo',
-  lat: 'lat',
-  long: 'long',
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
   mapId: 'mapId'
 } as const
 
@@ -95,10 +99,26 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
+export const JsonNullValueInput = {
+  JsonNull: 'JsonNull'
 } as const
 
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const JsonNullValueFilter = {
+  DbNull: 'DbNull',
+  JsonNull: 'JsonNull',
+  AnyNull: 'AnyNull'
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 

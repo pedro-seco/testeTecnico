@@ -41,5 +41,16 @@ Sobre os objetivos (inclusive os extras) que eu tinha colocado aqui, eu, o pedro
 
 Primeiro push está feito, api pronta e banco configurado(?).
 
-- FAZER DOC DOS ENDPOINTS
+- FAZER DOC
 - DESCOBRIR SE O QUE EU FIZ NO POSTMAN SÃO TESTE UNITÁRIOS (são 1:30 e minha dor de cabeça não me deixa focar mais, eu to desde 10 am cozinhando esse projeto)
+
+- Ajeitar o as pastas da aplicacao
+- exportar uma collection do postman p disponibilizar a testagem
+- Preparar o Deploy da aplicacaao
+
+DIAS DORMINDO MENOS DE 5 HORAS: 2
+
+## API
+
+### Endpoints
+### helper

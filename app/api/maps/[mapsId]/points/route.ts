@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import { badRequest, prismaToHttp } from "@/app/api/helper/httpUtils";
 import { isAtributeMissing, isBodyEmpty, isIdValid } from "@/app/api/helper/commonFunctions";
-import { criarPontoNoMapa, deletarPontosNoMapa } from "./services";
+import { createPOIsOnMap, deleteAllPOIsOnMap } from "./services";
 
 // /api/maps/[mapsId]/points
-//POST -> criaPonto(dados)
 export async function POST(
     request: Request,
     context: {params: Promise<{mapsId:string}>}
@@ -29,15 +28,14 @@ export async function POST(
                 return badRequest();
             }
         }
-
-        const pontoCriado = await criarPontoNoMapa(id, body)
         
-        return NextResponse.json(pontoCriado,{status: 200});
+        const createdPOI = await createPOIsOnMap(id, body)
+        
+        return NextResponse.json(createdPOI,{status: 200});
     } catch(error) {return prismaToHttp(error)}
     
 }
 
-// DELETE -> deletaPontos(idMapa)
 export async function DELETE(
     request: Request,
     context: {params: Promise<{mapsId:string}>}
@@ -50,7 +48,7 @@ export async function DELETE(
                 return badRequest()
             }
 
-            await deletarPontosNoMapa(id);
+            await deleteAllPOIsOnMap(id);
 
             return new NextResponse(null, {status: 204});
         } catch(error) {return prismaToHttp(error)}

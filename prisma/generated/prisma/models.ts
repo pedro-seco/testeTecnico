@@ -8,6 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Mapas.js'
+export type * from './models/Map.js'
 export type * from './models/POIs.js'
 export type * from './commonInputTypes.js'

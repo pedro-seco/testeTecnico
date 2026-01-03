@@ -1,21 +1,22 @@
 import { prisma } from "@/app/lib/prisma";
 import { POIs } from "@/prisma/generated/prisma/client";
-import { toPontoNoMapaDTO } from "./mapper";
+import { toPOIsOnMapDTO } from "./mapper";
 
-export async function criarPontoNoMapa(mapId:number, body: POIs): Promise<PontoNoMapaDTO>{
-    const pontoCriado = await prisma.pOIs.create({
+
+//  O MAP ID VEM DA URL -> PROMISE MAP ID CONSERTAR DEPOIS
+export async function createPOIsOnMap(mapId:number, body: POIs): Promise<POIsOnMapDTO>{
+    const createdPOI = await prisma.pOIs.create({
             data: {
-                titulo:body.titulo,
-                lat:body.lat,
-                long:body.long,
+                name:body.name,
+                latitude:body.latitude,
+                longitude:body.longitude,
                 mapId: Number(mapId),
             }
         });
-
-    return toPontoNoMapaDTO(pontoCriado);
+    return toPOIsOnMapDTO(createdPOI);
 }
 
-export async function deletarPontosNoMapa(id:number){
+export async function deleteAllPOIsOnMap(id:number){
     return await prisma.pOIs.deleteMany({
                 where: {
                 mapId: id,

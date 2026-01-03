@@ -13,4 +13,4 @@ export function prismaToHttp(error: unknown){
 
 export function badRequest(){
     return NextResponse.json({error: "Erro na requisição"},{ status: 400 });
-}  
+}

@@ -384,7 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Mapas: 'Mapas',
+  Map: 'Map',
   POIs: 'POIs'
 } as const
 
@@ -401,81 +401,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "mapas" | "pOIs"
+    modelProps: "map" | "pOIs"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Mapas: {
-      payload: Prisma.$MapasPayload<ExtArgs>
-      fields: Prisma.MapasFieldRefs
+    Map: {
+      payload: Prisma.$MapPayload<ExtArgs>
+      fields: Prisma.MapFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.MapasFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload> | null
+          args: Prisma.MapFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.MapasFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         findFirst: {
-          args: Prisma.MapasFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload> | null
+          args: Prisma.MapFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.MapasFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         findMany: {
-          args: Prisma.MapasFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>[]
+          args: Prisma.MapFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
         }
         create: {
-          args: Prisma.MapasCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         createMany: {
-          args: Prisma.MapasCreateManyArgs<ExtArgs>
+          args: Prisma.MapCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.MapasCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>[]
+          args: Prisma.MapCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
         }
         delete: {
-          args: Prisma.MapasDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         update: {
-          args: Prisma.MapasUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         deleteMany: {
-          args: Prisma.MapasDeleteManyArgs<ExtArgs>
+          args: Prisma.MapDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.MapasUpdateManyArgs<ExtArgs>
+          args: Prisma.MapUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.MapasUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>[]
+          args: Prisma.MapUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
         }
         upsert: {
-          args: Prisma.MapasUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapasPayload>
+          args: Prisma.MapUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
         }
         aggregate: {
-          args: Prisma.MapasAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMapas>
+          args: Prisma.MapAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMap>
         }
         groupBy: {
-          args: Prisma.MapasGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MapasGroupByOutputType>[]
+          args: Prisma.MapGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapGroupByOutputType>[]
         }
         count: {
-          args: Prisma.MapasCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MapasCountAggregateOutputType> | number
+          args: Prisma.MapCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapCountAggregateOutputType> | number
         }
       }
     }
@@ -589,19 +589,23 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MapasScalarFieldEnum = {
+export const MapScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  borders: 'borders',
+  createdAt: 'createdAt'
 } as const
 
-export type MapasScalarFieldEnum = (typeof MapasScalarFieldEnum)[keyof typeof MapasScalarFieldEnum]
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
 
 
 export const POIsScalarFieldEnum = {
   id: 'id',
-  titulo: 'titulo',
-  lat: 'lat',
-  long: 'long',
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
   mapId: 'mapId'
 } as const
 
@@ -616,12 +620,28 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
 } as const
 
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
 
@@ -648,6 +668,27 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 /**
@@ -745,7 +786,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  mapas?: Prisma.MapasOmit
+  map?: Prisma.MapOmit
   pOIs?: Prisma.POIsOmit
 }
 

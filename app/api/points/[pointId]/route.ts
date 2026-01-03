@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import {isBodyEmpty, isIdValid} from "../../helper/commonFunctions";
 import { badRequest, prismaToHttp } from "../../helper/httpUtils";
-import { deletarPonto, editarPonto } from "./service";
+import { deletePOIs, editPOIs } from "./service";
 
 // /api/points/[pointId]
-// PUT -> editaPonto(id, alteracoes)
 
 export async function PUT(
     request: Request, 
@@ -24,13 +23,12 @@ export async function PUT(
             return badRequest()
         }
         
-        const pontoEditado = await editarPonto(id,body);        
+        const editedPOIs = await editPOIs(id,body);        
 
-        return NextResponse.json(pontoEditado, {status: 200});
+        return NextResponse.json(editedPOIs, {status: 200});
     }catch (error) {return prismaToHttp(error);}
 }
 
-// DELETE -> deletaPonto(id)
 export async function DELETE(
     request:Request,
     context: {params: Promise<{pointId:string}>}
@@ -43,7 +41,7 @@ export async function DELETE(
                 return badRequest()
             }
             
-            await deletarPonto(id);
+            await deletePOIs(id);
             
             return new NextResponse(null, {status: 204});
         }catch(error) {return prismaToHttp(error)}

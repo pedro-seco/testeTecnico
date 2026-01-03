@@ -1,10 +1,11 @@
-type PontoDTO = {
+type POIsDTO = {
     id: number,
-    titulo?: string,
-    lat: number,
-    long: number
+    name: string,
+    latitude: number,
+    longitude: number,
+    mapId: number
 }
 
-type editarPontoBody = {
-    titulo?: string,
+type editPOIsBody = {
+    name: string
 }

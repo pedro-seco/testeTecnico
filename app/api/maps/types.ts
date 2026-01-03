@@ -1,19 +1,30 @@
 import { POIs, Prisma } from "@/prisma/generated/prisma/client"
 
-export type MapaComPontoDTO = {
+export type MapWithPOIsDTO = {
     id: number, 
-    name?: string,
-    pontos: PontoDTO[],
+    name: string,
+    latitude: number,
+    longitude: number,
+    borders: any, 
+    pois: POIsDTO[],
+    createdAt: Date
 }
 
-export type MapaDTO = {
+export type MapDTO = {
     id:number,
-    name?: string
+    name: string
+    latitude: number,
+    longitude: number,
+    borders: any,
+    createdAt: Date
 }
 
-export type criarMapaBody = {
-    name?: string,
-    pontos?: POIs[]
+export type createMapBody = {
+    name: string,
+    pois?: POIs[]
+    latitude: number,
+    longitude: number,
+    borders: any
 }
 
-export type mapaComPontos = Prisma.MapasGetPayload<{include:{pontos: true}}>
+export type mapWithPOIs = Prisma.MapGetPayload<{include:{pois: true}}>

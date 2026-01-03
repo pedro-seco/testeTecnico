@@ -10,17 +10,21 @@ datasource db {
   provider = "sqlite"
 }
 
-model Mapas {
+model Map {
   id Int @id @default(autoincrement())
-  name String?
-  pontos POIs[]
+  name String
+  latitude Float
+  longitude Float
+  borders Json
+  pois POIs[]
+  createdAt DateTime @default(now())
 }
 
 model POIs{
   id Int @id @default(autoincrement())
-  titulo String?
-  lat Int
-  long Int
+  name String
+  latitude Float
+  longitude Float
   mapId Int
-  mapa Mapas @relation(fields: [mapId], references: [id])
+  map Map @relation(fields: [mapId], references: [id])
 }

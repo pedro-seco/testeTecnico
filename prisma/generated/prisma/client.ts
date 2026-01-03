@@ -29,8 +29,8 @@ export * from "./enums.ts"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Mapas
- * const mapas = await prisma.mapas.findMany()
+ * // Fetch zero or more Maps
+ * const maps = await prisma.map.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,10 +40,10 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Mapas
+ * Model Map
  * 
  */
-export type Mapas = Prisma.MapasModel
+export type Map = Prisma.MapModel
 /**
  * Model POIs
  * 

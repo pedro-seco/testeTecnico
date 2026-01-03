@@ -1,7 +1,7 @@
-type PontoNoMapaDTO = {
+type POIsOnMapDTO = {
     id: number,
-    titulo?: string,
-    lat: number,
-    long: number,
+    name: string,
+    latitude: number,
+    longitude: number,
     mapId: number
 }

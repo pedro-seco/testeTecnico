@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "sqlite",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Mapas {\n  id     Int     @id @default(autoincrement())\n  name   String?\n  pontos POIs[]\n}\n\nmodel POIs {\n  id     Int     @id @default(autoincrement())\n  titulo String?\n  lat    Int\n  long   Int\n  mapId  Int\n  mapa   Mapas   @relation(fields: [mapId], references: [id])\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Map {\n  id        Int      @id @default(autoincrement())\n  name      String\n  latitude  Float\n  longitude Float\n  borders   Json\n  pois      POIs[]\n  createdAt DateTime @default(now())\n}\n\nmodel POIs {\n  id        Int    @id @default(autoincrement())\n  name      String\n  latitude  Float\n  longitude Float\n  mapId     Int\n  map       Map    @relation(fields: [mapId], references: [id])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Mapas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"pontos\",\"kind\":\"object\",\"type\":\"POIs\",\"relationName\":\"MapasToPOIs\"}],\"dbName\":null},\"POIs\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"titulo\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lat\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"long\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mapId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"mapa\",\"kind\":\"object\",\"type\":\"Mapas\",\"relationName\":\"MapasToPOIs\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Map\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"latitude\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"longitude\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"borders\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"pois\",\"kind\":\"object\",\"type\":\"POIs\",\"relationName\":\"MapToPOIs\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"POIs\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"latitude\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"longitude\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"mapId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"map\",\"kind\":\"object\",\"type\":\"Map\",\"relationName\":\"MapToPOIs\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -58,8 +58,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Mapas
-   * const mapas = await prisma.mapas.findMany()
+   * // Fetch zero or more Maps
+   * const maps = await prisma.map.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -80,8 +80,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Mapas
- * const mapas = await prisma.mapas.findMany()
+ * // Fetch zero or more Maps
+ * const maps = await prisma.map.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -175,14 +175,14 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.mapas`: Exposes CRUD operations for the **Mapas** model.
+   * `prisma.map`: Exposes CRUD operations for the **Map** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Mapas
-    * const mapas = await prisma.mapas.findMany()
+    * // Fetch zero or more Maps
+    * const maps = await prisma.map.findMany()
     * ```
     */
-  get mapas(): Prisma.MapasDelegate<ExtArgs, { omit: OmitOpts }>;
+  get map(): Prisma.MapDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.pOIs`: Exposes CRUD operations for the **POIs** model.

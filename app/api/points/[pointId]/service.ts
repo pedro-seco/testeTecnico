@@ -1,21 +1,21 @@
 import { prisma } from "@/app/lib/prisma";
-import { toPontoDTO } from "./mapper";
+import { toPOIsDTO } from "./mapper";
 
-export async function editarPonto(
+export async function editPOIs(
     id: number,
-    body: editarPontoBody): Promise<PontoDTO>{
+    body: editPOIsBody): Promise<POIsDTO>{
     
     const pOI = await prisma.pOIs.update({
         where: {id: id},
             data: {
-            titulo: body.titulo ?? undefined,
+            name: body.name
             },
         });
 
-    return toPontoDTO(pOI); 
+    return toPOIsDTO(pOI); 
 }
 
-export async function deletarPonto(id:number) {
+export async function deletePOIs(id:number) {
     return await prisma.pOIs.delete({
             where: {id: id}
             });
