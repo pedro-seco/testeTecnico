@@ -24,4 +24,4 @@ export async function deleteMapWithPOIs(id:number) {
 export async function deleteAllMaps(){
     await prisma.pOIs.deleteMany({});
     await prisma.map.deleteMany({});
-    }
+}

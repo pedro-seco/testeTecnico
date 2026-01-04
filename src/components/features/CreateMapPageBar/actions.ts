@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { createMap } from "@/src/app/api/maps/service";
 import { Borders} from "../../../types/types";
@@ -6,49 +6,40 @@ import { redirect } from "next/navigation";
 import { FoundCity, FormState } from "../../../types/types";
 import { getCityMaxBounds, parseAndValidateCoord, bBoxToBorders } from "@/src/services/CreateMapPageBar/services";
 import { COORTYPE } from "@/src/types/enums";
-
-
-function normalizePlaceInput(raw: string) {
-  return raw.trim().replace(/\s+/g, " ");
-}
+import { createMapBody } from "@/src/app/api/maps/types";
 
 export async function createMapAction(_: FormState, formData: FormData): Promise<FormState> {
-    const inputCity = formData.get("mapName");
-    
-    if (typeof(inputCity) !== "string"){
-        return { ok: false, error: "Informe um nome de cidade válido." }
-    }
+  const inputCity = formData.get("mapName");
+  
+  if(!isValidCityName(inputCity)){
+    return toMapFormError("Informe um nome de cidade válido.");
+  }
 
-    const city = normalizePlaceInput(inputCity);
+  const cityName = normalizePlaceInput(String((inputCity)));
+  let results;
 
-    if (city.length < 2) {
-      return { ok: false, error: "Informe um nome de cidade válido." };
-    }
+  try {
+      results = await getCityMaxBounds(cityName) 
+  } catch(error){return toMapFormError("Erro na criação do mapa.");}
 
-    let results;
+  if(results.length > 1){
+    console.log(results);
+    return toMapFormError("Endereço selecionado ambíguo. Tente algo como 'Rio de Janerio, RJ");
+  }
 
-    try {
-        results = await getCityMaxBounds(city) 
-    } catch(error){return { ok: false, error: "Erro na criaçao" }}
+  const foundCity = results[0];
+  let borders: Borders;
 
-/*     if(typeof(results) !== MaxBounds){
-        return { ok: false, error: "Nada encontrado" }
-    } */
+  try {borders = bBoxToBorders(foundCity.boundingbox);
+  } catch(error) {return toMapFormError("Erro ao calcular limites do mapa.");}
 
-    const foundCity = results[0];
-    
-    let borders:Borders;
+  const inputCreateMap = buildCreateMapInput(foundCity);
 
-    try {borders = bBoxToBorders(foundCity.boundingbox)
-    } catch(error) {return { ok: false, error: "Erro ao calcular limites." }}
-
-    const inputCreateMap = buildCreateMapInput(foundCity);
-
-    const createdMap = await createMap(inputCreateMap)
-    redirect(`/maps/${createdMap.id}`)
+  const createdMap = await createMap(inputCreateMap);
+  redirect(`/maps/${createdMap.id}`);
 }
 
-function buildCreateMapInput(foundCity: FoundCity) {
+function buildCreateMapInput(foundCity: FoundCity): createMapBody {
   const latitude = parseAndValidateCoord(foundCity.lat, COORTYPE.LAT);
   const longitude = parseAndValidateCoord(foundCity.lon, COORTYPE.LONG);
   const borders: Borders = bBoxToBorders(foundCity.boundingbox);
@@ -59,4 +50,30 @@ function buildCreateMapInput(foundCity: FoundCity) {
     longitude,
     borders,
   };
+}
+
+function normalizePlaceInput(raw: string): string {
+  return raw.trim().replace(/\s+/g, " ");
+}
+
+function toMapFormError(error: string): FormState{
+  return {ok: false, error};
+}
+
+function isValidCityName(inputCity: any): boolean{
+  if(typeof(inputCity) !== "string"){
+    return false;
+  }
+
+  const trimmed = inputCity.trim();
+  if (trimmed.length <= 2) {
+    return false;
+  }
+  
+  const isOnlyDigits = /^\d+$/.test(trimmed);
+  if(isOnlyDigits){
+    return false;
+  }
+
+  return true;
 }

@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 import { deleteMapWithPOIs } from "@/src/app/api/maps/[mapsId]/service";
 import { deletePOIs } from "@/src/app/api/points/[pointId]/service";

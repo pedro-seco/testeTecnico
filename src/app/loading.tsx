@@ -3,5 +3,5 @@ export default function Loading(){
         <div className="flex h-screen">
             <h1 className="m-auto text-3xl" >Carregando...</h1>
         </div>
-    )
+    );
 }

@@ -8,7 +8,8 @@ export async function getCityMaxBounds(query: string) {
       format: "jsonv2",
       limit: "5",
       adressdetails: "1",
-      countrycodes: "br"
+      countrycodes: "br",
+      featureType:	"city",
     });
 
   const response = await fetch(url, {

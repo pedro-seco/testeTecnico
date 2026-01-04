@@ -3,7 +3,6 @@ import ListOfMaps from "../../../components/features/ListOfMaps/ListOfMaps";
 import Link from "next/link";
 
 export default async function Home() {
-
   const listMaps = await searchMaps();
   
   return (
