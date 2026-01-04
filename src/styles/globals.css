@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --background: #232121;
+  --foreground: #FFFFFF;
+  --surface: #d9d9d9;
+  --primary: #a6a6a6;
+  --text-inverse:#000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-text-inverse: var(--text-inverse);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+}
+
+@layer components {
+  .maplibregl-popup-content {
+    @apply bg-[#232121]! p-0! rounded-lg! shadow-xl!;
+  }
+
+  .maplibregl-popup-anchor-top .maplibregl-popup-tip {
+    @apply border-b-[#232121]!; /* Pinta a seta de baixo */
+  }
+
+  .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+    @apply border-t-[#232121]!; 
+  }
+}

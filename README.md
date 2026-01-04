@@ -47,10 +47,10 @@ Primeiro push está feito, api pronta e banco configurado(?).
 - Ajeitar o as pastas da aplicacao
 - exportar uma collection do postman p disponibilizar a testagem
 - Preparar o Deploy da aplicacaao
+- Trocar latitude/longitude por lat/lng no projeto inteiro (começar pelo schema)
+- CommonUtils -> setLoading
+- Action -> FlyToPoint no ItemPOIs 
+- Customizar confirm()?
 
-DIAS DORMINDO MENOS DE 5 HORAS: 2
 
-## API
-
-### Endpoints
-### helper
+DIAS DORMINDO MENOS DE 5 HORAS SEGUIDOS: 2
