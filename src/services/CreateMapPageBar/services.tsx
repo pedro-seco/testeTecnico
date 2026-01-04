@@ -1,4 +1,5 @@
-import { Borders, COORTYPE, LIMITS } from "@/src/types/types";
+import { COORTYPE } from "@/src/types/enums";
+import { Borders, LIMITS } from "@/src/types/types";
 
 export async function getCityMaxBounds(query: string) {
   const url = `https://nominatim.openstreetmap.org/search?` +

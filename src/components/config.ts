@@ -1,0 +1,2 @@
+export const MAP_DEFAULT_ZOOM = 12;
+export const DEFAULT_PIN_ZOOM_THRESHOLD = 15;

@@ -26,14 +26,37 @@ body {
 
 @layer components {
   .maplibregl-popup-content {
-    @apply bg-[#232121]! p-0! rounded-lg! shadow-xl!;
+    @apply bg-background! p-0! rounded-lg! shadow-xl!;
   }
 
   .maplibregl-popup-anchor-top .maplibregl-popup-tip {
-    @apply border-b-[#232121]!; /* Pinta a seta de baixo */
+    @apply border-b-background!;
   }
 
   .maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
-    @apply border-t-[#232121]!; 
+    @apply border-t-background!; 
+  }
+
+  .btn-default {
+    border: 1px solid var(--foreground);
+    padding: 0.25rem 1.5rem;
+    background-color: transparent;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.2s ease; 
+  }
+
+  .btn-default:hover {
+    background-color: var(--foreground);
+    color: black;
+  }
+
+  .txt-title {
+    background-color: var(--background);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem; 
+    color: var(--foreground);
   }
 }

@@ -3,34 +3,49 @@
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { MapWithPOIsDTO } from '@/src/app/api/maps/types';
 import { IoIosPin } from "react-icons/io";
-import { Map, Marker, Popup } from 'react-map-gl/maplibre';
-import { useState } from 'react';
-import { CreatePOIsOnMapAction } from '../CreatePOIsPopup/actions';
+import { Map, MapRef, Marker, Popup } from 'react-map-gl/maplibre';
+import { useRef, useState } from 'react';
+import { CreatePOIsOnMapAction } from './actions';
 import { useRouter } from 'next/navigation';
+import { DEFAULT_PIN_ZOOM_THRESHOLD, MAP_DEFAULT_ZOOM } from '../../config';
 
 interface MapWindow {
     map: MapWithPOIsDTO;
 }
 
+
+type lngLatEvent = {
+  lngLat :{
+    lat:number,
+    lng:number
+  }
+}
+
 export function MapWindow({map}: {map: MapWithPOIsDTO}) {
+    const zoomNum = MAP_DEFAULT_ZOOM;
+    const pinZoomNum = DEFAULT_PIN_ZOOM_THRESHOLD;
     const router = useRouter();
-    const [currentZoom, setCurrentZoom] = useState(12);
+    const [currentZoom, setCurrentZoom] = useState(zoomNum);
     const [loading, setLoading] = useState(false);
     const [newPoint, setNewPoint] = useState<{lat: number; lng: number} | null>(null);
     const [pointName, setPointName] = useState("");
-    
-    const handleRightClick = (event: any) =>{
+    const mapRef = useRef<MapRef>(null);
+
+    /* const onCLickPOI = useCallback(({latitude, longitude}) => {
+      mapRef.current?.flyTo({center: [latitude,longitude]})
+    },[]); */
+
+    const handleRightClick = (event: lngLatEvent) =>{
             const {lat,lng} = event.lngLat;
             setNewPoint({lat,lng});
             setPointName("");
     }
 
-
     async function handleCreatePoint(){
-        if (!newPoint || !pointName){
-            return;
-        
+        if (loading || !newPoint || !pointName) {
+          return;
         }
+
 
         setLoading(true);
 
@@ -50,11 +65,12 @@ export function MapWindow({map}: {map: MapWithPOIsDTO}) {
 
     return(
         <div className='relative w-full h-full'>
-            <Map //TODO - AVALIAR COMPONENTE MAP
+            <Map
+                ref={mapRef}
                 initialViewState={{
                     longitude: map.longitude,
                     latitude: map.latitude,
-                    zoom: 12
+                    zoom: zoomNum
                 }}
                 style={{ 
                     position: 'absolute',
@@ -72,7 +88,7 @@ export function MapWindow({map}: {map: MapWithPOIsDTO}) {
                     <Marker key={poi.id} longitude={poi.longitude} latitude={poi.latitude} anchor='bottom'>
                         <div className="flex flex-col items-center justify-end group">
                           
-                            { currentZoom > 15 &&(
+                            { currentZoom > pinZoomNum &&(
                                 <span className=" text-gray-600 text-xl px-1" >{poi.name}</span>
                             )}
                             <IoIosPin className='text-red-500 text-4xl'/>
@@ -92,7 +108,6 @@ export function MapWindow({map}: {map: MapWithPOIsDTO}) {
                 >
                   <div className="flex flex-col gap-2 p-3 text-white min-w-50">
                     <h3 className="font-bold text-sm">Novo Ponto</h3>
-
                     <input
                       type="text"
                       placeholder="Padaria, Academia..."

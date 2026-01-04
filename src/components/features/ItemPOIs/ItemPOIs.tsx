@@ -1,4 +1,5 @@
-import ButtonDeletePOIs from "../ButtonDeletePOIs/ButtonDeletePOIs";
+import { ENTITIES } from "@/src/types/enums";
+import ButtonDelete from "../../common/ButtonDelete/ButtonDelete";
 
 interface ItemPOIs {
     id: number;
@@ -9,10 +10,8 @@ export default async function ItemPOIs(pois :ItemPOIs){
     return(
         <li key={pois.id}>
           <div className="flex grow items-center justify-between border-b border-white/10 pb-2 mb-2">
-            {pois.name}
-            <div className="border border-white px-6 py-1 text-sm hover:bg-white hover:text-black">
-              <ButtonDeletePOIs idPOIs={pois.id} />
-            </div>
+            <button className="hover:opacity-80 cursor-pointer">{pois.name}</button>
+            <ButtonDelete id={pois.id} entity={ENTITIES.POI} />
           </div> 
         </li>
     )

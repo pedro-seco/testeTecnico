@@ -1,10 +1,11 @@
 'use server'
 
 import { createMap } from "@/src/app/api/maps/service";
-import { Borders, COORTYPE } from "../../../types/types";
+import { Borders} from "../../../types/types";
 import { redirect } from "next/navigation";
 import { FoundCity, FormState } from "../../../types/types";
 import { getCityMaxBounds, parseAndValidateCoord, bBoxToBorders } from "@/src/services/CreateMapPageBar/services";
+import { COORTYPE } from "@/src/types/enums";
 
 
 function normalizePlaceInput(raw: string) {

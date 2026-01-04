@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { ListMaps } from "../../../types/interfaces"
-import ButtonDeleteMap from "../ButtonDeleteMap/ButtonDeleteMap";
-import ButtonDeleteAllMap from "../ButtonDeleteAllMaps/ButtonDeleteAllMap";
+import ButtonDelete from "../../common/ButtonDelete/ButtonDelete";
+import { ENTITIES } from "@/src/types/enums";
+import ButtonDeleteAll from "../../common/ButtonDeleteAll/ButtonDeleteAll";
 
 export default async function ListOfMaps({map}: ListMaps){
    
     return(
 
-    <div className="relative w-full h-145 border flex flex-col">
-      <span className="absolute -top-5 left-8 bg-[#232121] px-2 text-3xl">
+    <div className="relative w-full h-140 border flex flex-col">
+      <span className="absolute -top-5 left-8 txt-title">
         Cidades
       </span>
       <div className="h-full w-full p-6 pt-10 overflow-y-auto custom-scrollbar">
@@ -24,13 +25,11 @@ export default async function ListOfMaps({map}: ListMaps){
                   <div className="flex justify-between gap-4" >
                     <Link 
                       href={`/maps/${item.id}`} 
-                      className="border border-white px-6 py-1 hover:bg-white hover:text-black"
+                      className="btn-default"
                     >
                       Acessar
                     </Link>
-                    <div className="border border-white px-6 py-1 hover:bg-white hover:text-black">
-                      <ButtonDeleteMap mapId={item.id}/>
-                    </div>
+                    <ButtonDelete id={item.id} entity={ENTITIES.MAP}/>
                   </div>
                 </div>
               </li>
@@ -41,9 +40,7 @@ export default async function ListOfMaps({map}: ListMaps){
           )}
         </ol>
       </div>
-      <div className="flex justify-center border-t py-3 hover:bg-white hover:text-black">
-        <ButtonDeleteAllMap/>
-        </div>
+      <ButtonDeleteAll entity={ENTITIES.MAP} />
     </div>
     );
 }

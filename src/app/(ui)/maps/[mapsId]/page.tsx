@@ -1,5 +1,4 @@
 import { searchMapWithPOIs } from "@/src/app/api/maps/[mapsId]/service";
-import NavBar from "@/src/components/layouts/NavBar";
 import { notFound } from "next/navigation";
 import { MapWindow } from "@/src/components/features/MapWindow/MapWindow";
 import ListPOIs from "../../../../components/features/ListPOIs/ListPOIs";
@@ -12,21 +11,20 @@ export default async function MapPage(
     const mapWithPOIs = await searchMapWithPOIs(id);
     
     if (!mapWithPOIs){
-        notFound(); /* Configurar página do not found */
+        notFound();
     }
     
     return (
-        <div className="h-screen grid grid-rows-[auto_1fr] p-6 gap-4">
-            <NavBar/>
-            <main className="grid grid-cols-[1fr_3fr] gap-6 min-h-0">
-                <div className="min-h-0">
+        <div className="h-full p-5">
+            <main className="grid grid-cols-[1fr_3fr] gap-10 h-full">
+                <div className="min-h-0 grow">
                     <ListPOIs map={mapWithPOIs} />
                 </div>
                 <section className="relative min-h-0">
-                    <h2 className="absolute -top-5 left-8 bg-[#232121] px-2 text-3xl">
+                    <h2 className="absolute -top-5 left-8 txt-title">
                        {mapWithPOIs.name}
                     </h2>
-                    <div className="h-full border border-white p-5">
+                    <div className="h-full border p-5 grow">
                         <MapWindow map={mapWithPOIs} />
                     </div>
                 </section>

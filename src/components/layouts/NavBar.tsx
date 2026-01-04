@@ -3,7 +3,7 @@ import { FaSquareGithub } from "react-icons/fa6";
 
 export default function NavBar(){
     return(
-        <nav className="h-10 mb-8 w-full flex justify-between font-sans items-center px-3">
+        <nav className="h-10 mb-2 w-full flex justify-between font-sans items-center px-3">
             <h2 className="flex text-3xl">
                 <Link href="/" className="hover:opacity-70"> Meus Mapas </Link>
             </h2>

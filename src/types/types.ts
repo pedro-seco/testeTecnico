@@ -1,12 +1,11 @@
+import { COORTYPE, ENTITIES } from "./enums";
+
 export type Borders = {
     sw: { longitude: number; latitude: number};
     ne: { longitude: number; latitude: number};
 }
 
-export enum COORTYPE  {
-    LAT = "LAT",
-    LONG = "LONG"
-}
+
 
 export const LIMITS: Record<COORTYPE, { min: number; max: number }> = {
   [COORTYPE.LAT]: { min: -90, max: 90 },
@@ -23,3 +22,13 @@ export type FoundCity = {
 export type FormState =
   | { ok: true }
   | { ok: false; error: string;};
+
+export type ButtonDeleteInputProps = {
+    id:number,
+    entity:ENTITIES
+}
+
+export type ButtonDeleteAllInputProps = {
+    id?:number,
+    entity:ENTITIES
+}

@@ -11,23 +11,8 @@ interface ButtonFlyToPOI {
 
 
 
-export default function ButtonFlyToPOI({latitude, longitude, label = ""} :ButtonFlyToPOI){
-    const {current: map } = useMap();
+/* export default function ButtonFlyToPOI(props){
+    return(
 
-    const handleFlyTo = useCallback(() =>{
-      if(!map){
-        return;
-      }
-
-      map.flyTo({
-        center:[longitude,latitude],
-        zoom:14
-      });
-    }, [map,longitude,latitude]);
-
-  return (
-    <button onClick={handleFlyTo}>
-      {label}
-    </button>
-  );
-}
+    );
+} */
