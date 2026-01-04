@@ -1,4 +1,4 @@
-import CreateMapPageBar from "@/src/components/features/CreateMapPageBar/CreateMapPageBar";
+import CreateMapPageBar from "@/src/app/(ui)/components/features/CreateMapPageBar/CreateMapPageBar";
 
 export default function createMapPage() {
     return(

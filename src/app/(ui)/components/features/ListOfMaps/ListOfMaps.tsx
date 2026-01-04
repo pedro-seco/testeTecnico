@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ListMaps } from "../../../types/interfaces"
 import ButtonDelete from "../../common/ButtonDelete/ButtonDelete";
-import { ENTITIES } from "@/src/types/enums";
+import { ENTITIES } from "@/src/app/(ui)/types/enums";
 import ButtonDeleteAll from "../../common/ButtonDeleteAll/ButtonDeleteAll";
 
 export default async function ListOfMaps({map}: ListMaps){

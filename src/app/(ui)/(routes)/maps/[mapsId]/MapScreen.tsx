@@ -1,11 +1,11 @@
 'use client';
 
-import { MapWindow } from "@/src/components/features/MapWindow/MapWindow";
-import PointsMenu from "@/src/components/features/PointsMenu/PointsMenu";
+import { MapWindow } from "@/src/app/(ui)/components/features/MapWindow/MapWindow";
+import PointsMenu from "@/src/app/(ui)/components/features/PointsMenu/PointsMenu";
 import { MapRef } from "react-map-gl/maplibre";
 import { useCallback, useRef } from 'react';
-import { POINT_DEFAULT_ZOOM } from "@/src/components/config";
-import { MapProps } from "@/src/types/interfaces";
+import { POINT_DEFAULT_ZOOM } from "@/src/app/(ui)/components/config";
+import { MapProps } from "@/src/app/(ui)/types/interfaces";
 
 
 

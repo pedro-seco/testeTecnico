@@ -1,5 +1,5 @@
-import { searchMaps } from "../../api/maps/service";
-import ListOfMaps from "../../../components/features/ListOfMaps/ListOfMaps";
+import { searchMaps } from "../../../api/maps/service";
+import ListOfMaps from "../../components/features/ListOfMaps/ListOfMaps";
 import Link from "next/link";
 
 export default async function Home() {

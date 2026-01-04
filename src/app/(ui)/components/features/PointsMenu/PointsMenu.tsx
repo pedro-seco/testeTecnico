@@ -1,7 +1,7 @@
-import { ENTITIES } from "@/src/types/enums";
+import { ENTITIES } from "@/src/app/(ui)/types/enums";
 import ButtonDeleteAll from "../../common/ButtonDeleteAll/ButtonDeleteAll";
 import ItemPointList from "../ItemPointList/ItemPointList";
-import { MapItemProps } from "@/src/types/interfaces";
+import { MapItemProps } from "@/src/app/(ui)/types/interfaces";
 
 export default function PointsMenu({map, onSelectPoint}: MapItemProps){
     return(

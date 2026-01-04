@@ -4,7 +4,7 @@ import { isAtributeMissing, isBodyEmpty } from "../helper/commonFunctions";
 import { searchMaps, createMap } from "./service";
 import { deleteAllMaps } from "./[mapsId]/service";
 
-// api/maps/
+//api/maps/
 export async function GET(){
     try{
         const foundMap = await searchMaps();
@@ -27,10 +27,7 @@ export async function POST(request: Request){
     } catch(error) {return prismaToHttp(error)}
 }
 
-export async function DELETE(
-    request: Request,
-    context: {params: Promise<{mapsId:string}>}
-){
+export async function DELETE(){
     try{
         await deleteAllMaps();
         return new NextResponse(null,{status: 204});

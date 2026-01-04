@@ -1,6 +1,6 @@
 import { toPOIsOnMapDTO } from "./mapper";
 import { createPOIsBody } from "../../types";
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/src/app/lib/prisma";
 
 
 export async function createPOIsOnMap(mapId: number,body: createPOIsBody): Promise<POIsOnMapDTO>{

@@ -1,4 +1,4 @@
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/src/app/lib/prisma";
 import { toMapWithPOIsDTO, toMapDTO } from "./mapper";
 import { mapWithPOIs, createMapBody, MapDTO } from "./types";
 

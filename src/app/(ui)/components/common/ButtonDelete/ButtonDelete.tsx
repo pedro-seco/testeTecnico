@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ENTITIES } from "@/src/types/enums"
+import { ENTITIES } from "@/src/app/(ui)/types/enums"
 import { deleteMapAction, deletePOIsAction } from "./actions";
-import { ButtonDeleteInputProps } from "@/src/types/types";
+import { ButtonDeleteInputProps } from "@/src/app/(ui)/types/types";
 
 type deleteProp = {
     action: (id:number) => Promise<void>,

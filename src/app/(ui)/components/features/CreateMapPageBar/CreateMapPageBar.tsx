@@ -3,7 +3,7 @@
 import Form from 'next/form';
 import { useActionState } from "react";
 import { createMapAction } from "./actions";
-import { FormState } from '@/src/types/types';
+import { FormState } from '@/src/app/(ui)/types/types';
 
 const initialState: FormState = { ok: true };
 

@@ -8,7 +8,7 @@ import { RefObject, useState } from 'react';
 import { CreatePOIsOnMapAction } from './actions';
 import { useRouter } from 'next/navigation';
 import { LABEL_PIN_ZOOM_THRESHOLD, MAP_DEFAULT_ZOOM } from '../../config';
-import { lngLatEvent } from '@/src/types/types';
+import { lngLatEvent } from '@/src/app/(ui)/types/types';
 
 export function MapWindow({map, mapRef} : {map: MapWithPOIsDTO, mapRef: RefObject<MapRef | null>}) {
     const zoomNum = MAP_DEFAULT_ZOOM;

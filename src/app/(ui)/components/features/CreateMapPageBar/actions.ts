@@ -4,9 +4,10 @@ import { createMap } from "@/src/app/api/maps/service";
 import { Borders} from "../../../types/types";
 import { redirect } from "next/navigation";
 import { FoundCity, FormState } from "../../../types/types";
-import { getCityMaxBounds, parseAndValidateCoord, bBoxToBorders } from "@/src/services/CreateMapPageBar/services";
-import { COORTYPE } from "@/src/types/enums";
+import { parseAndValidateCoord, bBoxToBorders } from "@/src/app/(ui)/services/createCityServices";
+import { COORTYPE } from "@/src/app/(ui)/types/enums";
 import { createMapBody } from "@/src/app/api/maps/types";
+import { getCityMaxBounds } from "../../../services/locateCityServices";
 
 export async function createMapAction(_: FormState, formData: FormData): Promise<FormState> {
   const inputCity = formData.get("mapName");

@@ -1,8 +1,8 @@
 'use client';
 
-import { ENTITIES } from "@/src/types/enums";
+import { ENTITIES } from "@/src/app/(ui)/types/enums";
 import ButtonDelete from "../../common/ButtonDelete/ButtonDelete";
-import { PointListProps } from "@/src/types/interfaces";
+import { PointListProps } from "@/src/app/(ui)/types/interfaces";
 
 export default function ItemPointList({pointList, onSelectPointAction}: PointListProps){
   return (
