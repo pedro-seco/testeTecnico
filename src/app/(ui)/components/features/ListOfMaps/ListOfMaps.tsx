@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ListMaps } from "../../../types/interfaces"
+import { ListMapsProps } from "../../../types/interfaces"
 import ButtonDelete from "../../common/ButtonDelete/ButtonDelete";
 import { ENTITIES } from "@/src/app/(ui)/types/enums";
 import ButtonDeleteAll from "../../common/ButtonDeleteAll/ButtonDeleteAll";
 
-export default async function ListOfMaps({map}: ListMaps){
+export default async function ListOfMaps({map}: ListMapsProps){
     return(
       <div className="relative w-full h-140 border flex flex-col">
         <span className="absolute -top-5 left-8 txt-title">
@@ -23,7 +23,7 @@ export default async function ListOfMaps({map}: ListMaps){
                     <div className="flex justify-between gap-4" >
                       <Link 
                         href={`/maps/${item.id}`} 
-                        className="btn-default"
+                        className="btn-create-default"
                       >
                         Acessar
                       </Link>
@@ -33,7 +33,7 @@ export default async function ListOfMaps({map}: ListMaps){
                 </li>
               ))
             ) : (
-               <p className="text-center italic text-red-400 mt-10">Nenhum mapa encontrado.</p>
+               <p className="txt-notfound mt-10">Nenhum mapa encontrado.</p>
             )}
           </ol>
         </div>

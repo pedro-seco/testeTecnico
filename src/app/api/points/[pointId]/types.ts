@@ -1,4 +1,4 @@
-type POIsDTO = {
+export type POIsDTO = {
     id: number,
     name: string,
     latitude: number,
@@ -6,6 +6,6 @@ type POIsDTO = {
     mapId: number
 }
 
-type editPOIsBody = {
+export type editPOIsBody = {
     name: string
 }

@@ -1,4 +1,13 @@
--- TRANSCRIÇÃO MIGRATIONS DDL
+/*
+
+Exemplo de criação de bancos feitos pelo PRISMA
+
+Caso não fosse o SQLite e sim um banco mais tradicional, seria necessário antes de tudo:
+
+CREATE DATABASE mapas;
+USE mapas;
+
+*/
 
 PRAGMA foreign_keys = ON;
 
@@ -17,8 +26,5 @@ CREATE TABLE "POIs" (
     "name" TEXT NOT NULL,
     "latitude" REAL NOT NULL,
     "longitude" REAL NOT NULL,
-    "mapId" INTEGER NOT NULL,
-    
-
-    CONSTRAINT "POIs_mapId_fkey" FOREIGN KEY ("mapId") REFERENCES "Map" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "mapId" INTEGER NOT NULL REFERENCES "Map"("id"),
 );

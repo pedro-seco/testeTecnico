@@ -46,13 +46,13 @@ function getDeleteProp(entity:ENTITIES):deleteProp{
         return {
             action: deleteMapAction,
             msg: "Tem certeza que deseja excluir este mapa?",
-            className: "btn-default"
+            className: "btn-delete-default"
         }
     }
 
     return {
         action: deletePOIsAction,
         msg: "Tem certeza que deseja excluir este ponto?",
-        className: "btn-default text-sm"
+        className: "btn-delete-default text-sm"
     }
 }

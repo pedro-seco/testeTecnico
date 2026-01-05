@@ -38,6 +38,7 @@ body {
   }
 
   .btn-default {
+    display: inline-block;
     border: 1px solid var(--foreground);
     padding: 0.25rem 1.5rem;
     background-color: transparent;
@@ -51,6 +52,35 @@ body {
     color: black;
   }
 
+  .btn-create-default {
+    display: inline-block;
+    border: 1px solid var(--foreground);
+    padding: 0.25rem 1.5rem;
+    background-color: #38a169;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.2s ease; 
+  }
+
+  .btn-create-default:hover {
+    display: inline-block;
+    background-color: #68d391;
+  }
+  
+  .btn-delete-default {
+    display: inline-block;
+    border: 1px solid var(--foreground);
+    padding: 0.25rem 1.5rem;
+    background-color: #e7000b;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.2s ease; 
+  }
+
+  .btn-delete-default:hover {
+    background-color: #ff6467;
+  }
+
   .txt-title {
     background-color: var(--background);
     padding-left: 0.5rem;
@@ -58,5 +88,11 @@ body {
     font-size: 1.875rem;
     line-height: 2.25rem; 
     color: var(--foreground);
+  }
+
+  .txt-notfound{
+    text-align: center;     
+    font-style: italic;     
+    color: #f87171;
   }
 }

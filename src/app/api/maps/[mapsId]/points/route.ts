@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { badRequest, prismaToHttp } from "@/src/app/api/helper/httpUtils";
-import { isAtributeMissing, isBodyEmpty, isIdValid } from "@/src/app/api/helper/commonFunctions";
+import { isAtributeMissing, isBodyValid, isIdValid } from "@/src/app/api/helper/commonFunctions";
 import { createPOIsOnMap, deleteAllPOIsOnMap } from "./services";
 
 // /api/maps/[mapsId]/points
@@ -19,7 +19,7 @@ export async function POST(
 
         const body = await request.json();
         
-        if(isBodyEmpty(body)){
+        if(isBodyValid(body)){
             return badRequest()
         }
 

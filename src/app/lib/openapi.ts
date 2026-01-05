@@ -160,6 +160,23 @@ export const openapiSpec = {
           schema: { type: 'integer', format: 'int32' }
         }
       ],
+      get: {
+        summary: 'Get Point details',
+        tags: ['POIs'],
+        responses: {
+          '200': {
+            description: 'Point details retrieved successfully',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/PointResponse' }
+              }
+            }
+          },
+          '400': {description: 'Bad Request - Invalid ID or Body'},
+          '404': { description: 'Point not found' },
+          '500': { description: "Something went wrong." }
+        }
+      },
       put: {
         summary: 'Update a POI',
         tags: ['POIs'],

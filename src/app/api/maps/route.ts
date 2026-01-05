@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { badRequest, prismaToHttp } from "../helper/httpUtils";
-import { isAtributeMissing, isBodyEmpty } from "../helper/commonFunctions";
+import { isAtributeMissing, isBodyValid } from "../helper/commonFunctions";
 import { searchMaps, createMap } from "./service";
 import { deleteAllMaps } from "./[mapsId]/service";
 
@@ -17,7 +17,7 @@ export async function POST(request: Request){
     try{
         const body = await request.json();
 
-        if (isBodyEmpty(body) || isAtributeMissing(body.name)){
+        if (isBodyValid(body) || isAtributeMissing(body.name)){
             return badRequest()
         }
 

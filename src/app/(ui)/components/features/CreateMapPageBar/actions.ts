@@ -8,12 +8,13 @@ import { parseAndValidateCoord, bBoxToBorders } from "@/src/app/(ui)/services/cr
 import { COORTYPE } from "@/src/app/(ui)/types/enums";
 import { createMapBody } from "@/src/app/api/maps/types";
 import { getCityMaxBounds } from "../../../services/locateCityServices";
+import { toFormError } from "../../common/toFormError";
 
 export async function createMapAction(_: FormState, formData: FormData): Promise<FormState> {
   const inputCity = formData.get("mapName");
   
   if(!isValidCityName(inputCity)){
-    return toMapFormError("Informe um nome de cidade válido.");
+    return toFormError("Informe um nome de cidade válido.");
   }
 
   const cityName = normalizePlaceInput(String((inputCity)));
@@ -21,18 +22,18 @@ export async function createMapAction(_: FormState, formData: FormData): Promise
 
   try {
       results = await getCityMaxBounds(cityName) 
-  } catch(error){return toMapFormError("Erro na criação do mapa.");}
+  } catch(error){return toFormError("Erro na criação do mapa.");}
 
   if(results.length > 1){
     console.log(results);
-    return toMapFormError("Endereço selecionado ambíguo. Tente algo como 'Rio de Janerio, RJ");
+    return toFormError("Endereço selecionado ambíguo. Tente algo como 'Rio de Janerio, RJ");
   }
 
   const foundCity = results[0];
   let borders: Borders;
 
   try {borders = bBoxToBorders(foundCity.boundingbox);
-  } catch(error) {return toMapFormError("Erro ao calcular limites do mapa.");}
+  } catch(error) {return toFormError("Erro ao calcular limites do mapa.");}
 
   const inputCreateMap = buildCreateMapInput(foundCity);
 
@@ -57,9 +58,6 @@ function normalizePlaceInput(raw: string): string {
   return raw.trim().replace(/\s+/g, " ");
 }
 
-function toMapFormError(error: string): FormState{
-  return {ok: false, error};
-}
 
 function isValidCityName(inputCity: any): boolean{
   if(typeof(inputCity) !== "string"){

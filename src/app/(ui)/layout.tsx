@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Meus Mapas",
+  title: "NerdMapas",
   description: "Gerenciador de mapas by Pedro Seco",
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({
       <NavBar/>
       <html lang="pt-br">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} h-screen overflow-hidden antialiased`}
         >
           {children}
         </body>

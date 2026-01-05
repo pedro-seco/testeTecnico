@@ -6,9 +6,18 @@ export function isIdValid(id:number){
     return true
 }
 
-export function isBodyEmpty(body:any){
+export function isNameValid(name:string){
+    const trimmedName = name.trim().length ;
+    if (trimmedName === 0 || trimmedName < 3 || trimmedName > 35){
+        return true
+    }
     
-    if (body === null){
+    return false
+}
+
+export function isBodyValid(body:any){
+    
+    if (body === null || isNameValid(body.name)){
         return true
     }
     return false

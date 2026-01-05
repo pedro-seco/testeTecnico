@@ -30,6 +30,10 @@ export function MapWindow({map, mapRef} : {map: MapWithPOIsDTO, mapRef: RefObjec
           return;
         }
 
+        if (pointName.trim().length === 0) {
+            return alert("Nome inválido.");
+        }
+
         setLoading(true);
 
         const body = {
@@ -93,6 +97,7 @@ export function MapWindow({map, mapRef} : {map: MapWithPOIsDTO, mapRef: RefObjec
                         type="text"
                         placeholder="Padaria, Academia..."
                         value={pointName}
+                        maxLength={35}
                         onChange={(e) => setPointName(e.target.value)}
                         className="border p-1 text-sm  w-full"
                         autoFocus
@@ -100,14 +105,14 @@ export function MapWindow({map, mapRef} : {map: MapWithPOIsDTO, mapRef: RefObjec
                       <div className="flex gap-2 justify-end mt-1">
                         <button 
                           onClick={() => setNewPoint(null)}
-                          className="px-1 text-white hover:opacity-80"
+                          className="btn-delete-default"
                         >
                           Cancelar
                         </button>
                         <button 
                           onClick={handleCreatePoint}
                           disabled={loading || !pointName}
-                          className="text-white text-xs px-3 py-1 border hover:bg-white hover:text-black"
+                          className="btn-create-default"
                         >
                           {loading ? "..." : "Salvar"}
                         </button>

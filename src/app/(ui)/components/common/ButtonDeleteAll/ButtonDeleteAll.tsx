@@ -35,7 +35,7 @@ export default function ButtonDeleteAll({entity,id}: ButtonDeleteAllInputProps){
     return (
         <button
             onClick={handleDelete} disabled={loading}
-            className={"btn-default border-b-0 border-l-0 border-r-0 py-3"}>
+            className={"btn-delete-default text-2xl border-b-0 border-l-0 border-r-0 py-3"}>
                 {loading ? "Deletando..." : `${currDelProps.buttonMsg}`}
         </button>
     );
@@ -46,15 +46,15 @@ function getDeleteProp(entity:ENTITIES, id?:number):deleteAllProp{
     if(entity == ENTITIES.MAP){
         return {
             action: deleteAllMapAction,
-            msg: "Tem certeza que deseja excluir TODOS os mapas?",
-            buttonMsg: "Excluir TODOS os mapas"
+            msg: "Tem certeza que deseja excluir TODOS os Mapas?",
+            buttonMsg: "Excluir TODOS os Mapas"
         }
     }
 
     return {
         action: () => deleteAllPointsAction(id!),
-        msg: "Tem certeza que deseja excluir TODOS os pontos?",
-        buttonMsg: "Excluir TODOS os pontos"
+        msg: "Tem certeza que deseja excluir TODOS os Pontos?",
+        buttonMsg: "Excluir TODOS os Pontos"
     }
 }
 

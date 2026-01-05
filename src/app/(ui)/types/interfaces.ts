@@ -1,7 +1,11 @@
-import { MapWithPOIsDTO } from "@/src/app/api/maps/types";
+import { mapWithPOIs, MapWithPOIsDTO } from "@/src/app/api/maps/types";
 
 export interface MapProps {
     mapWithPOIs:MapWithPOIsDTO;
+}
+
+export interface ListMapsProps {
+  map: mapWithPOIs[]
 }
 
 export interface PointListProps {

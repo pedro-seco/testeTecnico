@@ -1,56 +1,243 @@
-# Meus Mapas
+# NerdMapas BR [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![npm version](https://img.shields.io/badge/npm-11.6.2-blue?style=flat)](https://www.npmjs.com/package/npm?activeTab=versions)
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js Badge">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind Badge">
+<img src="https://img.shields.io/badge/sqlite-000000?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite Badge">
+  <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript Badge">
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js Badge">
+</p>
 
-Teste técnico para estagiário em Desenvolvimento na [NerdMonster](https://nerdmonster.com/)
+<p align="center">
+  Teste técnico para a vaga de Estágio em Desenvolvimento na <a href="https://nerdmonster.com/">NerdMonster</a>.
+</p>
 
-## Sumário
+<p align="center">
+  <a href="#-sobre-o-projeto">Sobre</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
+  <a href="#-layout">Layout</a> •
+  <a href="#-como-executar">Como Executar</a> •
+  <a href="#-tecnologias">Tecnologias</a> •
+  <a href="#-autor">Autor</a>
+</p>
 
-1. [Critérios](#Critérios)
-2. [Sistema](#Sistema)  
-2.1. [Tela 1](#tela-1)  
-2.2. [Tela 2](#tela-2)
+## 💻 Sobre o projeto
 
-## Critérios
+O **NerdMapas BR** é uma aplicação web desenvolvida para gerenciar mapas e pontos de interesse (POIs). O projeto permite a criação de mapas personalizados baseados em cidades reais, utilizando serviços de geolocalização para definir limites geográficos e interatividade completa.
 
-A avaliação será baseada em 5 critérios principais, começando por:  
+## ⚙️ Funcionalidades
 
-- Critério 1 (20 pontos) – Fundamentos (Dev Web, Redes, POO e BD).: Avalia se o candidato domina a lógica básica e consegue transformar o problema em código funcional.  
+-  **Criação de Mapas:** Gera mapas a partir do endereço de uma cidade (ex: “Rio de Janeiro, RJ”).  
+-  **Geocoding:** Busca automática de coordenadas e limites geográficos (bounds) via API do **[Nominatim](https://nominatim.openstreetmap.org/ui/about.htmlhttps://nominatim.openstreetmap.org/ui/about.html)**.  
+-  **Interatividade:** Exibição de mapa interativo utilizando **[MapLibre](https://maplibre.org/)** .  
+- **Gerenciamento de POIs:** Adição e visualização de pontos de interesse dentro do mapa.  
+-  **Persistência de Dados:** API interna **[(Next.js)](https://nextjs.org/)** para salvar e recuperar informações.  
 
-- Critério 2 (20 pontos) – Funcionamento da Solução: Avalia se o sistema roda corretamente e entrega o que foi proposto.  
+## 📝 Como executar
 
-- Critério 3 (20 pontos) – Organização do Projeto: Avalia se o código e a estrutura do projeto estão organizados e fáceis de entender.  
+### 🚧 Pré-requisitos
 
-- Critério 4 (20 pontos) – Uso de Banco de Dados: Avalia se o candidato consegue criar e manipular dados de forma simples e correta.  
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/en/) (Recomendado: Versão LTS)
+- [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
+(Recomendado: 11.6.2 )
+### 🎲 Rodando a aplicação
 
-- Critério 5 (20 pontos) – Clareza e Comunicação: Avalia se o candidato consegue explicar o que fez e documentar minimamente a solução.  
+```bash
+# Clone este repositório
+$ git clone https://github.com/pedro-seco/nextjs-NerdMapasBr
 
-- Critério 6 (extras) - Fez a mais… Mostrou que sabe? Quis inovar? Isso é muito bem vindo e damos pontos para isso. Quero usar docker? use. Quero fazer deploy. Faça! Nos impressione! Entra no jogo!
+# Acesse a pasta do projeto no terminal/cmd
+$ cd nerdmapas-br
 
-## Sistema  
+# Instale as dependências
+$ npm install
 
-### Tela 1  
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
 
-Listagem de Mapas será a tela inicial e deve permitir listar todos os mapas criados, exibir o nome do mapa e a quantidade de pontos cadastrados, além de possibilitar criar um novo mapa e acessar um mapa existente.
+# O servidor iniciará na porta:3000 - acesse http://localhost:3000
+# npm run dev -p <port> - caso queira outra porta  
+```  
 
-### Tela 2  
+## 🖥️ Stack
 
-Ao acessar um mapa, o usuário será direcionado para a Tela 2 – Detalhe do Mapa (Cadastro de Pontos). Essa tela deve conter um mapa interativo, uma lista lateral ou inferior com todos os pontos cadastrados e um indicador visível com o total de pontos cadastrados naquele mapa. O usuário deverá conseguir clicar no mapa para adicionar um novo ponto, o que deve abrir um modal de cadastro, onde será possível informar o nome do ponto, com latitude e longitude preenchidas automaticamente. O sistema deve exibir todos os pontos tanto no mapa quanto na lista, permitir editar apenas o nome do ponto, excluir um ponto específico e também excluir todos os pontos do mapa através de um botão dedicado. Não é necessário permitir a alteração da posição do ponto após o cadastro.
+### Backend
 
-## TODO
+- **[React:](https://pt-br.legacy.reactjs.org/)** Biblioteca principal para construção da interface.
+- **[Next.js:](https://nextjs.org/)** Framework React utilizado para rotas, renderização e otimização.
+- **[Tailwind CSS:](https://tailwindcss.com/)** Framework de utilitários para estilização rápida e responsiva.
+- **[React MapLibre GL:](https://visgl.github.io/react-maplibre/docs)** Biblioteca para renderização dos mapas interativos.
+- **[TypeScript](https://www.typescriptlang.org/):** Superset do JavaScript para tipagem estática e segurança no código.
 
-Sobre os objetivos (inclusive os extras) que eu tinha colocado aqui, eu, o pedro do passado, deixo uma reflexão ao pedro do futuro: "Falar é fácil, quero ver código"
+### Frontend
 
-Primeiro push está feito, api pronta e banco configurado(?).
+- **[Next.js](https://nextjs.org/) API Routes:** Criação de endpoints da API em Typescript (Backend-for-Frontend).
+- **[Nominatim API:](https://nominatim.openstreetmap.org/ui/about.htmlhttps://nominatim.openstreetmap.org/ui/about.html)** Serviço externo utilizado para geocoding (busca de endereços e coordenadas).
+- **[Swagger / OpenAPI:](https://swagger.io/)** Documentação interativa das rotas da API (visível na pasta `api/openapi`).
 
-- FAZER DOC
-- DESCOBRIR SE O QUE EU FIZ NO POSTMAN SÃO TESTE UNITÁRIOS (são 1:30 e minha dor de cabeça não me deixa focar mais, eu to desde 10 am cozinhando esse projeto)
+### Estruturas de Dados e Relacionamentos  
 
-- Ajeitar o as pastas da aplicacao
-- exportar uma collection do postman p disponibilizar a testagem
-- Preparar o Deploy da aplicacaao
-- Trocar latitude/longitude por lat/lng no projeto inteiro (começar pelo schema)
-- CommonUtils -> setLoading
-- Action -> FlyToPoint no ItemPOIs 
-- Customizar confirm()?
+- **[Prisma ORM:](https://www.prisma.io/)** Ferramenta para facilitar a interação e modelagem do banco de dados.
+- **[SQLite:](https://sqlite.org/index.html)** Banco de dados relacional leve e baseado em arquivo, ideal para este tipo de projeto.
 
+## 🚀 Funcionalidades  
 
-DIAS DORMINDO MENOS DE 5 HORAS SEGUIDOS: 2
+- **Manipulação de Pontos:** Criar, Listar, Visualizar e excluir pontos.
+- **Manipulação de Mapas:** Criar, Listar, Visualizar e excluir mapas.
+- **Mapa Interativo:** Criação e visualização de pontos a um clique de distância.
+- **API Documentada:** Swagger acessível em `/docs`  
+
+## 📂 Estrutura do Projeto
+```
+nerdmapas-br/
+📂 app/             	        # App Router Principal
+├── 📂 ui/         	            # Interface do Usuário (Group Route)
+│   ├── 📂 (routes)/ 		    # Páginas e rotas de navegação
+│   ├── 📂 components/	        # Componentes reutilizáveis (Mapas, Inputs)
+│   ├── 📂 services/ 		    # Camada de serviços e fetch de dados
+│   ├── 📂 styles/   		    # Arquivos de estilização global
+│   ├── 📂 types/    		    # Definições de tipos TypeScript
+├── 📂 api/          		    # API Routes (Backend Next.js)
+│   ├── 📂 maps/     		    # Endpoints para gestão de mapas
+│   ├── 📂 points/   		    # Endpoints para gestão de POIs
+│   ├── 📂 openapi/  		    # Especificações/Docs da API
+│   └── 📂 helper/   		    # Helpers e utilitários da API
+├── 📂 lib/          		    # Configurações de bibliotecas (Prisma, Utils)
+├── 📜scripts_definition.sql	# Exemplo de criação de bancos feitos pelo PRISMA em SQL puro (DDL)
+└── 📜scripts_example.sql	    # Exemplos de queries que estão sendo executadas pelo PRISMA  (DML)
+```
+
+## 🎨 Layout
+
+### Landing Page 
+
+### Criar Mapas  
+
+### Mapa Interativo  
+
+### Criar Pontos  
+
+### Editar Pontos  # NerdMapas BR [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![npm version](https://img.shields.io/badge/npm-11.6.2-blue?style=flat)](https://www.npmjs.com/package/npm?activeTab=versions)
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js Badge">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind Badge">
+<img src="https://img.shields.io/badge/sqlite-000000?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite Badge">
+  <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript Badge">
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js Badge">
+</p>
+
+<p align="center">
+  Teste técnico para a vaga de Estágio em Desenvolvimento na <a href="https://nerdmonster.com/">NerdMonster</a>.
+</p>
+
+<p align="center">
+  <a href="#-sobre-o-projeto">Sobre</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
+  <a href="#-layout">Layout</a> •
+  <a href="#-como-executar">Como Executar</a> •
+  <a href="#-tecnologias">Tecnologias</a> •
+  <a href="#-autor">Autor</a>
+</p>
+
+## 💻 Sobre o projeto
+
+O **NerdMapas BR** é uma aplicação web desenvolvida para gerenciar mapas e pontos de interesse (POIs). O projeto permite a criação de mapas personalizados baseados em cidades reais, utilizando serviços de geolocalização para definir limites geográficos e interatividade completa.
+
+## ⚙️ Funcionalidades
+
+-  **Criação de Mapas:** Gera mapas a partir do endereço de uma cidade (ex: “Rio de Janeiro, RJ”).  
+-  **Geocoding:** Busca automática de coordenadas e limites geográficos (bounds) via API do **[Nominatim](https://nominatim.openstreetmap.org/ui/about.htmlhttps://nominatim.openstreetmap.org/ui/about.html)**.  
+-  **Interatividade:** Exibição de mapa interativo utilizando **[MapLibre](https://maplibre.org/)** .  
+- **Gerenciamento de POIs:** Adição e visualização de pontos de interesse dentro do mapa.  
+-  **Persistência de Dados:** API interna **[(Next.js)](https://nextjs.org/)** para salvar e recuperar informações.  
+
+## 📝 Como executar
+
+### 🚧 Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/en/) (Recomendado: Versão LTS)
+- [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
+(Recomendado: 11.6.2 )
+### 🎲 Rodando a aplicação
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/pedro-seco/nextjs-NerdMapasBr
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd nerdmapas-br
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+
+# O servidor iniciará na porta:3000 - acesse http://localhost:3000
+# npm run dev -p <port> - caso queira outra porta  
+```  
+
+## 🖥️ Stack
+
+### Backend
+
+- **[React:](https://pt-br.legacy.reactjs.org/)** Biblioteca principal para construção da interface.
+- **[Next.js:](https://nextjs.org/)** Framework React utilizado para rotas, renderização e otimização.
+- **[Tailwind CSS:](https://tailwindcss.com/)** Framework de utilitários para estilização rápida e responsiva.
+- **[React MapLibre GL:](https://visgl.github.io/react-maplibre/docs)** Biblioteca para renderização dos mapas interativos.
+- **[TypeScript](https://www.typescriptlang.org/):** Superset do JavaScript para tipagem estática e segurança no código.
+
+### Frontend
+
+- **[Next.js](https://nextjs.org/) API Routes:** Criação de endpoints da API em Typescript (Backend-for-Frontend).
+- **[Nominatim API:](https://nominatim.openstreetmap.org/ui/about.htmlhttps://nominatim.openstreetmap.org/ui/about.html)** Serviço externo utilizado para geocoding (busca de endereços e coordenadas).
+- **[Swagger / OpenAPI:](https://swagger.io/)** Documentação interativa das rotas da API (visível na pasta `api/openapi`).
+
+### Estruturas de Dados e Relacionamentos  
+
+- **[Prisma ORM:](https://www.prisma.io/)** Ferramenta para facilitar a interação e modelagem do banco de dados.
+- **[SQLite:](https://sqlite.org/index.html)** Banco de dados relacional leve e baseado em arquivo, ideal para este tipo de projeto.
+
+## 🚀 Funcionalidades  
+
+- **Manipulação de Pontos:** Criar, Listar, Visualizar e excluir pontos.
+- **Manipulação de Mapas:** Criar, Listar, Visualizar e excluir mapas.
+- **Mapa Interativo:** Criação e visualização de pontos a um clique de distância.
+- **API Documentada:** Swagger acessível em `/docs`  
+
+## 📂 Estrutura do Projeto
+```
+nerdmapas-br/
+📂 app/             	        # App Router Principal
+├── 📂 ui/         	            # Interface do Usuário (Group Route)
+│   ├── 📂 (routes)/ 		    # Páginas e rotas de navegação
+│   ├── 📂 components/	        # Componentes reutilizáveis (Mapas, Inputs)
+│   ├── 📂 services/ 		    # Camada de serviços e fetch de dados
+│   ├── 📂 styles/   		    # Arquivos de estilização global
+│   ├── 📂 types/    		    # Definições de tipos TypeScript
+├── 📂 api/          		    # API Routes (Backend Next.js)
+│   ├── 📂 maps/     		    # Endpoints para gestão de mapas
+│   ├── 📂 points/   		    # Endpoints para gestão de POIs
+│   ├── 📂 openapi/  		    # Especificações/Docs da API
+│   └── 📂 helper/   		    # Helpers e utilitários da API
+├── 📂 lib/          		    # Configurações de bibliotecas (Prisma, Utils)
+├── 📜scripts_definition.sql	# Exemplo de criação de bancos feitos pelo PRISMA em SQL puro (DDL)
+└── 📜scripts_example.sql	    # Exemplos de queries que estão sendo executadas pelo PRISMA  (DML)
+```
+
+## 🎨 Layout
+
+### Landing Page 
+
+### Criar Mapas  
+
+### Mapa Interativo  
+
+### Criar Pontos  
+
+### Editar Pontos  
